@@ -1,0 +1,126 @@
+//- BANNER TOP
+.block.white-color.center.container-fluid.block-full
+  .bg-fixed
+    .background-full.zoomClass.bg-texture(style="background-image:url('assets/misc/demo07/marathon01.jpg');")
+      .bg
+  .row
+    .column-1
+      .spacing.sp-vertical.sp-lg
+      //- h1.sans-2.text-sm.from-top.anim-slow.anim-far.anim Logo
+      img.img.from-top.anim-slow.anim-far.anim(src="assets/misc/demo07/logo.png",alt="")
+      h3.sans-2.text-sm.from-bottom.anim-slow.anim-far.anim Volamos contigo
+      .spacing.sp-vertical.sp-md
+
+//- BLOCK 2
+.block.container-fluid.white-color.main-bgcolor
+  .row
+    .col-sm-5.bg-fixed.slice-corner.slice-main
+      .background-full.img-float(style="background-image:url('assets/misc/demo07/seccion01.jpg');")
+    .col-sm-7.col-sm-offset-5.from-right.anim
+      .col-sm-11.col-sm-offset-1
+        h2.sans-2.white-color ¿Qué es Spydos?
+        p.white-color Captamos impactantes imágenes aéreas de eventos deportivos (carreras populares, ciclistas y triatlones). Nuestra herramienta: drones de última generación. Nuestro secreto: el conocimiento en profundidad de las pruebas que grabamos. 
+        h3
+          a.btn.btn-bordered.icon-show.btn-md.italic.sans-2(href="#history",data-scrollTo="true") ¿Quieres saber más?
+            span.icon-right.fa.fa-chevron-right
+
+.block.center.container-fluid
+  .bg-fixed
+    .background-full.bg-alpha-dark.zoomClass(style="background-image:url('assets/misc/demo07/carreras.jpg');")
+      .bg
+  .row
+    .column-1.center.white-color.from-top.anim-far.anim-slow.anim
+      h1 Carreras populares
+      .spacing.sp-vertical.sp-sm
+      p La meta sólo es el inicio
+
+.block.center.container-fluid
+  .bg-fixed
+    .background-full.bg-alpha-dark.zoomClass(style="background-image:url('assets/misc/demo07/ciclismo.jpg');")
+      .bg
+  .row
+    .column-1.center.white-color.from-top.anim-far.anim-slow.anim
+      h1 BTTS
+      .spacing.sp-vertical.sp-sm
+      p El reto de la montaña
+
+.block.center.container-fluid
+  .bg-fixed
+    .background-full.bg-alpha-dark.zoomClass(style="background-image:url('assets/misc/demo07/triatlon.jpg');")
+      .bg
+  .row
+    .column-1.center.white-color.from-top.anim-far.anim-slow.anim
+      h1 Triatlón
+      .spacing.sp-vertical.sp-sm
+      p Lo único imposible es lo que no intentas
+
+#history.study.block.container-fluid.posts-block.lightgray-bgcolor
+  .bg-fixed
+    .background-full.zoomClass(style="background-image:url('assets/misc/demo07/nombre.jpg')")
+  .row
+    .col-sm-12.center
+      a.btn.btn-gradient.btn-main.btn-sm(href="#")
+        h3.lowercase.light-color Por qué Spyros
+      .spacing.sp-md
+    .study-1.col-sm-8.col-sm-offset-2.light-bgcolor.dark-color
+      .block
+        h3.lined-sm Una historia de voluntad
+        p.lighter Spiridon Louis conocido como "Spyros", se ganaba la vida vendiendo agua en las calles de Atenas, y, contra todo pronóstico, ganó el oro en la maratón de las primeras Olimpiadas de la era moderna (en 1896), venciendo a varios corredores de renombre. 
+        p.lighter Nosotros nos hemos inspirado en él porque creemos firmemente que dentro de cada persona existe la capacidad para hacer grandes cosas, sólo necesitamos tener la voluntad de llevarlas a cabo. 
+        p.lighter Por eso, nuestra voluntad es acompañar a los deportistas anónimos en sus retos, capturar sus hazañas, compartir sus victorias y fomentar la práctica del deporte como herramienta de poder de cambio para alcanzar una sociedad mejor, una sociedad que se esfuerza por cambiar las cosas.
+
+        
+  .spacing.sp-md
+
+.block.container-fluid.main-bgcolor.white-color
+  .row
+    .col-md-7.col-sm-8.col-xs-12.from-left.anim
+      h2.sans-2 ¿Eres organizador? 
+      p En Spydos hacemos vídeos de alta calidad mostrando tu evento y tu localidad desde una perspectiva asombrosa. 
+
+      p Utilizamos drones de última generación y cumplimos con toda la normativa en materia de seguridad para su manejo y mantenimiento.
+      h3
+        a.btn.icon-show.btn-md.btn-bordered.sans-2.italic(href="mailto:hello@spydos.com") Contacta con nosotros
+          span.icon-right.fa.fa-chevron-right
+    .col-md-5.col-md-offset-7.col-sm-4.col-sm-offset-8.col-xs-hidden.slice-corner.slice-left.slice-main.bg-fixed.slice-corner.slice-left.slice-light.bg-fixed
+      .background-full.img-float(style="background-image:url('assets/misc/demo07/organizador.jpeg');")
+
+
+#section6.block.container-fluid.block-wide.lightgray-bgcolor
+  .row.portfolio.thumbs-wide
+    //- .col-sm-2.center
+    a.col-sm-12.gray-bgcolor.thumb.zoomHover.center.accordion-show(href="#acc-01")
+      
+      .text-content
+        .spacing.sp-sm
+        .spacing.sp-xs
+        h3.lined.title
+          //- span.steady.icon-measure
+          | ¿Quieres estar al día de tu deporte favorito?
+        br
+        p
+          .btn.btn-sm.btn-bordered.btn-dark.sans-2 Suscríbete a nuestra newsletter
+.accordion
+  #acc-01.block.container-fluid.dark-bgcolor.light-color.accordion-container.acc-closed
+    .row
+        .col-sm-10.col-sm-offset-1
+          .spacing.sp-md
+          //- h3
+          //-   span.main-color.bold.uppercase.sans-2.text-sm Enter your email
+          //-   br
+          //-   span.serif-2.italic to stay tunned with us
+          //- .spacing.sp-vertical.sp-sm
+        .col-sm-10.col-sm-offset-1
+          form.form-inline.form-big.center.form-bordered
+            .form-group.align-left
+              h3.title
+                span.accent-color.bold.uppercase.sans-2.text-sm Introduce tu correo
+                br
+                span.serif-2.italic.text-sm para conectar con nosotros
+              .sp-horizontal.sp-xs
+            .form-group
+              label.sr-only(for="") Tu correo
+              input.form-control(placeholder="Tu email",type="email")
+            button.btn.btn-md.serif.btn-bordered.btn-dark(type="submit") Enviar
+          .spacing.sp-md
+

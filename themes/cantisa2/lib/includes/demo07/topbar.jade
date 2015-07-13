@@ -1,0 +1,28 @@
+nav.navbar.nav-transparent.navbar-fixed-top.light-color
+  .container-fluid
+    //- Brand and toggle
+    .navbar-header.nav-headerboxed.main-bgcolor
+      a.navbar-brand(href="#section2",data-scroll="true")
+        img.brand(src="assets/misc/demo07/logo.png")
+
+
+    
+    .collapse.navbar-collapse.sans.uppercase
+      //- Left menu
+      //-
+        ul.nav.navbar-nav
+          li.active
+            a(href="#") Link
+              span.sr-only Current
+          li
+            a(href="#") Link
+      //- Right menu
+      
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(href="#section2",data-scrollTo="true").sans-2.lighter
+            i  Nuestro blog
+        li
+          a.btn.btn-main.btn-sm.icon-show.lighter(href="#")
+            i.sans-2 Busca tu foto
+            span.icon-right.fa.fa-search

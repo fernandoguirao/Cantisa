@@ -1,0 +1,46 @@
+#categorias
+  .block.titlebanner.black-color.center.container-fluid.gray-bgcolor.block-stretch
+    .row
+      .column-1
+        h2 Categorías
+
+
+  .study.block.container-fluid.posts-block.lightgray-bgcolor
+
+    - while (have_posts()): the_post();
+        .row
+          .uppercase
+            a(href="/")
+              | Home 
+            | < 
+            a(href="/noticias")
+              | Productos 
+            | <
+            a(href!="<?php echo get_category_link();?>") 
+              - single_cat_title();
+          .spacing.sp-sm2
+          .study-1.sol-sm-12.col-md-12.col-lg-10.col-lg-offset-1.light-bgcolor.dark-color
+            .block
+                .row
+                  .col-xs-12
+                    h3.text-lg.lighter Cantos y molduras
+                    h5.main-color Productos de madera
+                .row.row-lessgutter.thumbs
+                  .col-sm-6.col-lessgutter
+                    a.img-full.thumb.thumb-mini.background-full.main-bgcolor(href="")
+                      p
+                        - the_title();
+                    a.img-full.thumb.thumb-mini.background-full.main-bgcolor(href="")
+                  .col-sm-3.col-lessgutter
+                    a.img-full.thumb.thumb-mini.background-full.main-bgcolor(href="")
+                    a.img-full.thumb.thumb-mini.background-full.main-bgcolor(href="")
+                  .col-sm-3.col-lessgutter
+                    a.img-full.thumb.thumb-mini.background-full.main-bgcolor(href="")
+                    a.img-full.thumb.thumb-mini.background-full.main-bgcolor(href="")
+                  .col-sm-12
+                    .spacing.sp-sm2
+                    a.text-link(href="/noticias")
+                      p.uppercase.main-color.text-center < Volver a productos
+                    .spacing.sp-sm2
+          .spacing.sp-md
+    -endwhile;

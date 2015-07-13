@@ -1,0 +1,33 @@
+.accordion-show {
+
+}
+
+.accordion-container {
+  overflow: hidden;
+  padding-top:0!important;
+  padding-bottom: 0!important;
+  @media(max-width:@screen-xs-max){
+    padding-top:0!important;
+    padding-bottom: 0!important;
+    height: inherit;
+  }
+  .acc-content {
+    margin-top:66px;
+    margin-bottom:66px;
+    .opacity(1);
+    .transition(all,.7s,@easeInOutCubic);
+    @media(max-width:@screen-sm-max){
+      margin-top:26px;
+      margin-bottom:36px;
+    }
+  }
+
+  
+  &.acc-closed {
+    height:0;
+    .acc-content {
+      margin-top:-100%;
+      .opacity(0);
+    }
+  }
+}

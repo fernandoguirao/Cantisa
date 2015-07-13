@@ -1,0 +1,48 @@
+#noticia
+  .block.titlebanner.black-color.center.container-fluid.gray-bgcolor.block-stretch
+    .row
+      .column-1
+        h2 Noticias
+
+  .study.block.container-fluid.posts-block.lightgray-bgcolor
+    .row
+      .uppercase
+        a(href="/")
+          | Homes 
+        | < 
+        a(href="/noticias")
+          | Noticias
+      .spacing.sp-sm2
+      .study-1.sol-sm-12.col-md-12.col-lg-10.col-lg-offset-1.light-bgcolor.dark-color
+        .block
+          - query_posts('post_type=post');
+          - if (have_posts()): 
+          - while (have_posts()): the_post();
+          .row
+            .col-sm-12.col-md-6
+              p
+                span.main-color
+                  - echo get_the_date('j/m/y');
+                span.black-color  
+                  - $allCat = get_the_category();
+                  - $lastCat = array_reverse($allCat);
+                  - echo $lastCat[0]->name;
+              a.text-link(href!="<?php echo get_permalink(); ?>")
+                h3.main-color.uppercase
+                  - the_title();
+              .spacing.sp-xs2
+              p
+                - the_excerpt();
+              a.text-link.main-color(href!="<?php echo get_permalink(); ?>")
+                p Seguir leyendo
+              .spacing.sp-md
+            .col-md-6.col-sm-12
+              a(href!="<?php echo get_permalink(); ?>")
+                img.img-full(src!="<?php echo the_field('imagen_principal'); ?>",alt="")
+              .spacing.sp-sm2
+            .col-sm-12
+              hr
+              .spacing.sp-sm2
+          - endwhile;
+          - endif;
+      .spacing.sp-md

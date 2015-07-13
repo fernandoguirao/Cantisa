@@ -1,0 +1,90 @@
+#contacto
+  #map.block.block-full.light-color.center.container-fluid.background-full
+    iframe(width="600",height="450",frameborder="0",src="https://www.google.com/maps/embed/v1/place?q=Calle%20Gasco%20Oliag%2C%2010%2C%20Valencia%2C%20Espa%C3%B1a&key=AIzaSyA2krBchnBxATGkN8XjD-F3qlYh-wR0-m8&")
+
+  //- PORTFOLIO
+  .block.container-fluid.block-wide.lightgray-bgcolor
+    .row.portfolio.thumbs-wide
+      //- .col-sm-2.center
+      .col-sm-6.dark-bgcolor.light-color.thumb.zoomHover.center
+        .text-content
+          .spacing.sp-sm2
+          h2.text-sm.title Contacta con
+            span.text-lg.bolder Cantisa S.A.
+          p C/ Pintor Joaquín Sorolla,
+            br
+            | Polígono industrial Ciudad Mudeco
+            br
+            | 4630 Quart de Poblet Valencia, España
+          .spacing.sp-sm
+      a.col-sm-6.gray-bgcolor.dark-color.thumb.zoomHover.center(href="mailto:cantisa@cantisa.es")
+        .text-content
+          .spacing.sp-sm
+          h3.title
+            span.steady.icon-envelope
+            span.text-lg.main-color 961 597 242
+            span.text-sm cantisa@cantisa.es
+
+  .study.block.container-fluid.posts-block.lightgray-bgcolor
+    .row
+      .study-1.col-sm-12.col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2.light-bgcolor.dark-color
+        form
+          - echo do_shortcode('[contact-form-7 id="40" title="Formulario de contacto 1"]')
+            //-
+              .col-sm-6
+                .form-group
+                  label Nombre
+                    span.main-color *
+                  input.form-control(type="text",placeholder="")
+                .form-group
+                  label Empresa
+                  input.form-control(type="text",placeholder="")
+                .form-group
+                  label Población y provincia
+                  input.form-control(type="text",placeholder="")
+                .form-group
+                  label Teléfono
+                    span.main-color *
+                  input.form-control(type="text",placeholder="")
+                .form-group
+                  label Email
+                    span.main-color *
+                  input.form-control(type="text",placeholder="")
+              .col-sm-6
+                .form-group
+                  label Comentarios
+                  textarea.form-control(placeholder="",rows="9")
+                .form-group
+                  label Información de interés
+                  .row
+                    .col-sm-6
+                      .checkbox
+                        label
+                          input(type="checkbox",value="option2")
+                          | Producto a
+                      .checkbox
+                        label
+                          input(type="checkbox",value="option2")
+                          | Producto b
+                      .checkbox
+                        label
+                          input(type="checkbox",value="option2")
+                          | Producto c
+                    .col-sm-6
+                      .checkbox
+                        label
+                          input(type="checkbox",value="option2")
+                          | Producto a
+                      .checkbox
+                        label
+                          input(type="checkbox",value="option2")
+                          | Producto b
+                      .checkbox
+                        label
+                          input(type="checkbox",value="option2")
+                          | Producto c
+              .col-sm-12.text-center
+                .spacing.sp-sm
+                button.btn.dark-btn Enviar
+      
+      .spacing.sp-md

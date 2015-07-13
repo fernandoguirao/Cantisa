@@ -1,0 +1,63 @@
+.block.block-wide.container-fluid.block-carousel
+  .row
+    .col-sm-12
+      #myCarousel.carousel.slide(data-ride='carousel')
+        //-
+          ol.carousel-indicators
+            li.active(data-target='#myCarousel', data-slide-to='0')
+            |         
+            li(data-target='#myCarousel', data-slide-to='1')
+            |         
+            li(data-target='#myCarousel', data-slide-to='2')     
+        .carousel-inner(role='listbox')
+          .item.active
+            .col-sm-8.col-sm-offset-2.col-xs-12.col-xs-offset-0
+              .col-sm-6
+                .img.background-full(style="background-image:url('assets/images/background-full.png');")
+              .col-sm-6
+                .contents
+                  h3.sans-2.bold Another kind of subtitle and small caption
+                  p
+                    | Note: If you&apos;re viewing this page via a 
+                    code file://
+                    |  URL, the &quot;next&quot; and &quot;previous&quot; Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.
+                  .carousel-caption
+                    
+                
+          .item
+            .col-sm-8.col-sm-offset-2
+              .col-sm-6
+                .img.background-full(style="background-image:url('assets/images/background-full.png');")
+              .col-sm-6
+                .contents
+                  h3.sans-2.bold Another kind of subtitle and small caption
+                  p
+                    | Note: If you&apos;re viewing this page via a 
+                    code file://
+                    |  URL, the &quot;next&quot; and &quot;previous&quot; Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.
+                  .carousel-caption
+                    //- Without caption
+          .item
+            .col-sm-8.col-sm-offset-2
+              .col-sm-6
+                .img.background-full(style="background-image:url('assets/images/background-full.png');")
+              .col-sm-6
+                .contents
+                  h3.sans-2.bold Another kind of subtitle and small caption
+                  p
+                    | Note: If you&apos;re viewing this page via a 
+                    code file://
+                    |  URL, the &quot;next&quot; and &quot;previous&quot; Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.
+                  .carousel-caption
+                    //- Without caption
+        a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
+          span.sr-only Previous
+          .img.background-full(style="background-image:url('assets/images/background-full.png');")
+          .btn.btn-block.btn-dark.btn-square
+            span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+        a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
+          span.sr-only Next
+          .img.background-full(style="background-image:url('assets/images/background-full.png');")
+          .btn.btn-block.btn-dark.btn-square
+            span.sans.light-color.hidden-sm Next element
+            span.icon-right.glyphicon.glyphicon-chevron-right(aria-hidden='true')

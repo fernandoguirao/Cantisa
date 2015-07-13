@@ -1,0 +1,54 @@
+nav.navbar.nav-transparent.navbar-fixed-top.light-color
+  .container-fluid
+    //- Brand and toggle
+    .navbar-header.nav-headerboxed.main-bgcolor
+      //-
+        button.navbar-toggle.collapsed(type="button",data-toggle="collapse",data-target="#sidebar-hidden")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      a.navbar-brand(href="#section2",data-scroll="true")
+        img.brand(src="assets/images/logo-bueninvento.png")
+
+    
+    //- Menu
+    .collapse.navbar-collapse.sans.uppercase
+      //- Left menu
+      //-
+        ul.nav.navbar-nav
+          li.active
+            a(href="#") Link
+              span.sr-only Current
+          li
+            a(href="#") Link
+      //- Right menu
+      ul.nav.navbar-nav.navbar-right
+        li.active
+          a(href="#section2",data-scroll="true") El problema
+        li
+          a(href="#section2",data-scroll="true") Solución
+        li
+          a(href="#section2",data-scroll="true") Paquetes
+
+        //-
+          li.dropdown
+            a.dropdown-toggle(href="#",data-toggle="dropdown",role="button",aria-expanded="false") Dropdown
+              span.caret
+            ul.dropdown-menu(role="menu")
+              li
+                a(href="#") Action
+              li
+                a(href="#") Another action
+              li.divider
+              li
+                a(href="#") Another action
+        li
+          .btn.btn-main.btn-sm.bold.icon-show Contacta
+            span.icon-right.fa.fa-envelope
+          //- Form
+          //-
+            form.form-bordered.navbar-form.navbar-left(role="search")
+              .form-group
+                input.form-control(type="text",placeholder="Search")
+              button.btn.btn-bordered(type="submit") Submit

@@ -1,0 +1,106 @@
+/*TEAM*/
+.team-block {
+  .second-line {
+    line-height: 1.35;
+  }
+  .icon-block {
+    .team-links {
+      margin-top:148px;
+      width: ~"calc(100% - 49px)";
+
+      width: ~"-moz-calc(100% - 49px)";
+      /* WebKit */
+      width: ~"-webkit-calc(100% - 49px)";
+      /* Opera */
+      width: ~"-o-calc(100% - 49px)";
+      .btn {
+        text-transform: none;
+        font-size: 13px;
+        border-width: 0px!important;
+        border-radius: 0;
+        background-color: #DCDADA;
+        margin:0;
+        @media(max-width:@screen-xs-min){
+          padding-top: 12px;
+          padding-bottom:12px;
+          width: 50%;
+          float: left;
+        }
+        span {
+          font-size:14px!important;
+        }
+        background-color:darken(@light-gray,5%)!important;
+        &:nth-child(even) {
+          background-color:darken(@light-gray,10%)!important;
+        }
+      }
+    }
+    @media(min-width:@screen-md-max){
+      .icon-container {
+        width:185px;
+        height:182px;
+      }
+      .text-container {
+        margin-left:135px;
+      }
+    }
+    @media(min-width:@screen-sm-max){
+      .icon-container {
+        width:155px;
+        height:182px;
+      }
+      .team-links {
+        margin-top:148px;
+      }
+
+      .text-container {
+        margin-left:106px;
+      }
+    }
+    @media(min-width:@screen-xs-min){
+      .icon-container {
+        width:167px;
+        height:170px;
+      }
+      .team-links {
+        margin-top:136px;
+        .btn {
+          margin:0px 0;
+          // &:nth-child(even) {
+          //   background-color:rgba(0,0,0,.15);
+          // }
+        }
+      }
+      .text-container {
+        margin-left:118px;
+      }
+    }
+    @media(max-width:@screen-xs-min){
+      .icon-container {
+        width:100%;
+        height:243px;
+        margin-bottom: 13px;
+        text-align: left;
+        position: relative;
+      }
+      .team-links {
+        bottom:0;
+        position:absolute;
+        display: inline-block;
+        width:100%;
+        .btn {
+          margin:0;
+          background-color: #D1D1D1;
+        }
+      }
+      .text-container {
+        margin-left:0;
+        margin-bottom:10px;
+      }
+    }
+  }
+  @media(max-width:@screen-xs-max){
+    padding:40px 40px;
+    text-align: left;
+  }
+}

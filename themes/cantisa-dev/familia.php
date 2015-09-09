@@ -1,5 +1,5 @@
 <?php /* ?><?php Template Name: Familia ?><?php */ ?><?php get_header(); ?><?php $term = get_term_by( 'slug', get_query_var('family'), 'tipo_de_producto' ); ?><?php $categoria = $term->name; ?><?php $textf = get_tax_meta($term,'ba_text_field_id',true); ?><?php $family = get_query_var( 'family' ); ?><?php $post_type = 'cantisa_producto'; ?><?php $tax = 'tipo_de_producto'; ?><?php $tax_terms = get_terms($tax); ?><?php if ($tax_terms): ?><?php foreach ($tax_terms  as $tax_term) { ?><?php $args=array('post_type' => $post_type,'posts_per_page' => -1,'tax_query' => array(array('taxonomy' =>'tipo_de_producto','field'    => 'slug','terms' => $family ))); ?><?php } ?><?php endif; ?><?php $my_query = null; ?><?php $my_query = new WP_Query($args); ?><?php if( $my_query->have_posts() ): ?>
-<div id="productos">
+<div id="productos" class="familia">
   <div class="study block container-fluid posts-block lightgray-bgcolor">
     <div class="row">
       <div class="uppercase"><a href="/">Home </a><i class="fa fa-chevron-right"></i><a href="/productos"> Productos </a><i class="fa fa-chevron-right"></i><a href="/<?php echo $family ?>"><?php echo ' '.$categoria; ?></a></div>

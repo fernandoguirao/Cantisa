@@ -7,11 +7,11 @@
           </p></a>
         <div class="spacing sp-sm"></div><img src="<?php the_field('foto_principal');?>" alt="" class="img-full"/>
         <div class="block main-bgcolor light-color">
-          <div class="align-right">
+          <div class="align-right"><?php if (get_field('grosor')):  ?>
             <div class="btn btn-bordered btn-nolink">
               <p class="text-xl lowercase"><?php the_field('grosor'); ?><span class="uppercase text-sm"><?php if(ICL_LANGUAGE_CODE=='en') { ?>thickness<?php } else { ?>espesor<?php } ?></span></p>
             </div>
-            <div class="spacing sp-sm"></div>
+            <div class="spacing sp-sm"></div><?php endif; ?>
             <p class="lines"><?php the_field('atributo_breve_1'); ?>
             </p>
             <p class="lines"><?php the_field('atributo_breve_2'); ?>
@@ -41,16 +41,17 @@
           </div>
           <div class="spacing sp-xs"></div><?php while ( have_rows('acabados') ) : the_row(); ?>
           <li>
-            <div class="titulo btn btn-block btn-lightgray"><?php the_sub_field('titulo'); ?>
+            <div data-toggle="modal" data-target="#detalleproducto" class="titulo btn btn-block btn-lightgray cp-modal"><?php the_sub_field('titulo'); ?>
             </div>
             <div class="detalles hidden">
-              <div class="col-sm-12"><?php the_sub_field('descripcion'); ?><a href="<?php the_sub_field('detalles');?>" target="_blank" class="main-color"><i class="fa fa-download"></i><?php if(ICL_LANGUAGE_CODE=='en') { ?>Technical details<?php } else { ?>Detalles técnicos del producto<?php } ?></a>
+              <div class="col-sm-12"><?php the_sub_field('descripcion'); ?><a href="<?php the_sub_field('detalles');?>" target="_blank" class="main-color"><i style="margin-right:6px;" class="fa fa-download"></i><?php if(ICL_LANGUAGE_CODE=='en') { ?>Technical details<?php } else { ?>Detalles técnicos del producto<?php } ?></a>
                 <div class="spacing sp-sm"></div>
               </div>
               <div class="col-sm-12"><?php the_sub_field('imagenes'); ?>
               </div>
             </div>
-          </li><?php endwhile; ?><?php else : ?><?php endif; ?>
+          </li><?php endwhile; ?>
+          <div class="spacing sp-sm"></div><?php else : ?><?php endif; ?>
         </ul>
         <ul class="acabados col-sm-6 text-center"><?php if( have_rows('chapas') ): ?>
           <div class="spacing sp-xs"></div>
@@ -58,21 +59,24 @@
           </div>
           <div class="spacing sp-xs"></div><?php while ( have_rows('chapas') ) : the_row(); ?>
           <li>
-            <div class="titulo btn btn-block btn-lightgray"><?php the_sub_field('titulo'); ?>
+            <div data-toggle="modal" data-target="#detalleproducto" class="titulo btn btn-block btn-lightgray cp-modal"><?php the_sub_field('titulo'); ?>
             </div>
             <div class="detalles hidden">
-              <div class="col-sm-12"><?php the_sub_field('descripcion'); ?><a href="<?php the_sub_field('detalles');?>" target="_blank" class="main-color"><i class="fa fa-download"></i><?php if(ICL_LANGUAGE_CODE=='en') { ?>Technical details<?php } else { ?>Detalles técnicos del producto<?php } ?></a>
+              <div class="col-sm-12">
+                <p class="descripcion"><?php the_sub_field('descripcion'); ?>
+                </p><a href="<?php the_sub_field('detalles');?>" target="_blank" class="main-color"><i style="margin-right:6px;" class="fa fa-download"></i><?php if(ICL_LANGUAGE_CODE=='en') { ?>Technical details<?php } else { ?>Detalles técnicos del producto<?php } ?></a>
                 <div class="spacing sp-sm"></div>
               </div>
               <div class="col-sm-12"><?php the_sub_field('imagenes'); ?>
               </div>
             </div>
-          </li><?php endwhile; ?><?php else : ?><?php endif; ?>
+          </li><?php endwhile; ?>
+          <div class="spacing sp-sm"></div><?php else : ?><?php endif; ?>
         </ul>
         <div class="detalleOut col-sm-6 hidden">
           <div class="here"></div>
           <div class="spacing sp-xs"></div>
-          <div class="btn btn-lightgray text-right"><i class="fa fa-chevron-left"></i><?php if(ICL_LANGUAGE_CODE=='en') { ?>Back to the sheet<?php } else { ?>Volver a la ficha<?php } ?>
+          <div class="btn btn-lightgray text-right"><i style="margin-right:6px;" class="fa fa-chevron-left"></i><?php if(ICL_LANGUAGE_CODE=='en') { ?>Back to the sheet<?php } else { ?>Volver a la ficha<?php } ?>
           </div>
         </div>
       </div>
@@ -86,4 +90,29 @@
       <div class="col-sm-4 col-lessgutter"><a href="<?php echo the_field('foto4'); ?>" rel="lightbox[producto]" title="" style="background-image:url('<?php the_field('foto4');?>')" class="img-full background-full thumb thumb-sm"></a></div><?php } ?>
     </div>
   </div>
-</div><?php get_footer(); ?>
+</div>
+<div id="detalleproducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" data-dismiss="modal" class="btn btn-main"><?php if(ICL_LANGUAGE_CODE=='en') { ?>Back<?php } else { ?>Volver<?php } ?>
+        </button>
+        <h3 class="modal-title">Modal title</h3>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+<script>
+  var mbody = $('#detalleproducto .modal-body');
+  var mtitulo = $('#detalleproducto .modal-title');
+  var mheader = $('#detalleproducto .modal-header');
+  $('.cp-modal').click(function(){
+    var imgg = $(this).next().find('img');
+    mheader.attr('style','background-image:url('+imgg.attr('src')+');background-size:cover;background-position:center;');
+  
+    mbody.html($(this).next().html());
+    mtitulo.html($(this).html());
+  })
+</script><?php get_footer(); ?>

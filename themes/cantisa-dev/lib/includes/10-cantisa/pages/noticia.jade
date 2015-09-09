@@ -11,10 +11,10 @@
           .uppercase
             a(href="/")
               | Home 
-            | < 
+            span.fa.fa-chevron-left(style="margin-right:6px;")
             a(href="/noticias")
               | Noticias 
-            | <
+            span.fa.fa-chevron-left(style="margin-right:6px;")
             a(href!="<?php echo get_permalink();?>") 
               - the_title();
           .spacing.sp-sm2
@@ -26,7 +26,8 @@
                       - echo get_the_date('j/m/y');
                     h3.main-color 
                       - the_title();
-                    .spacing.sp-xs2
+                    
+                    p.text-sm
                       - $cats = get_the_category();
                       - $cat_name = $cats[0]->name;
                       //- - echo $cat_name
@@ -39,6 +40,7 @@
                       -  }
                       - echo trim($output, $separator);
                       - }
+                    .spacing.sp-xs2
                     p 
                       - the_content();
                     .spacing.sp-md

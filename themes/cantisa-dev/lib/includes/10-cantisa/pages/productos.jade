@@ -1,17 +1,79 @@
+#home.slide-productos
+  #myCarousel.carousel.slide.main-bgcolor.light-color(data-ride='carousel')
+    ol.carousel-indicators
+      li.active(data-target='#myCarousel', data-slide-to='0')
+      li(data-target='#myCarousel', data-slide-to='1')
+      li(data-target='#myCarousel', data-slide-to='2')
+    |     
+    .carousel-inner(role='listbox')
+      - $post_object = get_field('destacado_1')
+      - if ($post_object):
+      - $post = $post_object
+      - setup_postdata ($post)
+      a.item.active(href!="<?php echo get_permalink(); ?>")
+        .bg-fixed
+          .background-full.zoomClass.bg-alpha-main(style!="background-image:url('<?php the_field('foto_principal')?>')")
+            .bg
+        img.first-slide.zoomClass(src!="<?php the_field('foto_principal')?>", alt='')
+        .container
+          .carousel-caption
+            h2.text-lg.lighter
+              span.bolder.uppercase 
+                - the_field('titulo_linea_1')
+      - endif
+      - wp_reset_postdata()
+      - $post_object = get_field('destacado_2')
+      - if ($post_object):
+      - $post = $post_object
+      - setup_postdata ($post)  
+      a.item.slide-prev.slide-next(href="/")
+        .bg-fixed
+          .background-full.zoomClass.bg-alpha-main(style!="background-image:url('<?php the_field('foto_principal')?>')")
+            .bg
+        img.first-slide.zoomClass(src!="<?php the_field('foto_principal')?>", alt='')
+        .container
+          .carousel-caption
+            h2.text-lg.lighter
+              span.bolder.uppercase 
+                - the_field('titulo_linea_1')
+        - endif 
+        - wp_reset_postdata()
+        - $post_object = get_field('destacado_3')
+        - if ($post_object):
+        - $post = $post_object
+        - setup_postdata ($post)
+      a.item.slide-prev.slide-next(href="/")
+        .bg-fixed
+          .background-full.zoomClass.bg-alpha-main(style!="background-image:url('<?php the_field('foto_principal')?>')")
+            .bg
+        img.first-slide.zoomClass(src!="<?php the_field('foto_principal')?>", alt='')
+        .container
+          .carousel-caption
+            h2.text-lg.lighter
+              span.bolder.uppercase 
+                - the_field('titulo_linea_1')
+        - endif 
+        - wp_reset_postdata()
+    a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
+      span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+      span.sr-only Previous
+    a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
+      span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+      span.sr-only Next  
+
 #productos
-  #banner.block.light-color.center.container-fluid.background-full.bg-alpha-dark(style!="background-image:url('<?php echo get_template_directory_uri(); ?>/assets/misc/10-cantisa/web/home.jpg')")
-    .bg
-    .row
-      .spacing.sp-xl
-      //- .col-sm-8.col-sm-offset-2
-      .column-1
-        h3.text-lg.lighter
-          - the_field('titulo')
-    .next-up
-      a.btn.btn-circle.btn-sm.from-top.anim-slow.anim(href='#listaproductos',data-scrollTo="true")
-        span.glyphicon.glyphicon-menu-down
-    .spacing.sp-lg
-  //- PRUEBAS
+  //-
+    #banner.block.light-color.center.container-fluid.background-full.bg-alpha-dark(style!="background-image:url('<?php echo get_template_directory_uri(); ?>/assets/misc/10-cantisa/web/home.jpg')")
+      .bg
+      .row
+        .spacing.sp-xl
+        .column-1
+          h3.text-lg.lighter
+            - the_field('titulo')
+      .next-up
+        a.btn.btn-circle.btn-sm.from-top.anim-slow.anim(href='#listaproductos',data-scrollTo="true")
+          span.glyphicon.glyphicon-menu-down
+      .spacing.sp-lg
   - $terms = get_terms( 'tipo_de_producto' );
   - if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
   #listaproductos

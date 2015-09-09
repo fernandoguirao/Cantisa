@@ -6,7 +6,8 @@ var open = 'false';
 searchBtn.click(function(){
   if(open != 'false') {
     searchBar.velocity({
-      marginTop: "-110px",
+      // marginTop: "-110px",
+      marginTop: "-80px",
       opacity: 0
     },150);
     searchBtn.children('span').removeClass('fa-remove').addClass('fa-search');
@@ -22,7 +23,7 @@ searchBtn.click(function(){
 })
 
 // al hacer click en botón
-var detalleBtn = $('#producto .acabados li .btn');
+/*var detalleBtn = $('#producto .acabados li .btn');
 var detalle;
 var detalleOut = $('#producto .detalleOut .here')
 detalleBtn.click(function(){
@@ -44,7 +45,7 @@ $('.detalleOut .text-right').click(function(){
   $(this).parent().addClass('hidden');
   $('.acabados').removeClass('hid');
   $('.acabados').removeClass('sho');
-})
+})*/
 
 function imageclick () {
   var image = $('#producto .detalleOut img');

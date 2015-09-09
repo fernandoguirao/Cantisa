@@ -9,7 +9,7 @@
   </div>
   <div class="study block container-fluid posts-block lightgray-bgcolor"><?php while (have_posts()): the_post(); ?>
     <div class="row">
-      <div class="uppercase"><a href="/">Home </a>< <a href="/noticias">Noticias </a><<a href="<?php echo get_permalink();?>"> <?php the_title(); ?></a></div>
+      <div class="uppercase"><a href="/">Home </a><span style="margin-right:6px;" class="fa fa-chevron-left"></span><a href="/noticias">Noticias </a><span style="margin-right:6px;" class="fa fa-chevron-left"></span><a href="<?php echo get_permalink();?>"> <?php the_title(); ?></a></div>
       <div class="spacing sp-sm2"></div>
       <div class="study-1 sol-sm-12 col-md-12 col-lg-10 col-lg-offset-1 light-bgcolor dark-color">
         <div class="block">
@@ -19,8 +19,9 @@
               </p>
               <h3 class="main-color"> <?php the_title(); ?>
               </h3>
-              <div class="spacing sp-xs2"><?php $cats = get_the_category(); ?><?php $cat_name = $cats[0]->name; ?><?php $categories = get_the_category(); ?><?php $separator = ' '; ?><?php $output = ''; ?><?php if($categories){ ?><?php foreach($categories as $category) { ?><?php $output .= '<a href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "View all posts in %s" ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator; ?><?php } ?><?php echo trim($output, $separator); ?><?php } ?>
-              </div>
+              <p class="text-sm"><?php $cats = get_the_category(); ?><?php $cat_name = $cats[0]->name; ?><?php $categories = get_the_category(); ?><?php $separator = ' '; ?><?php $output = ''; ?><?php if($categories){ ?><?php foreach($categories as $category) { ?><?php $output .= '<a href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "View all posts in %s" ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator; ?><?php } ?><?php echo trim($output, $separator); ?><?php } ?>
+              </p>
+              <div class="spacing sp-xs2"></div>
               <p> <?php the_content(); ?>
               </p>
               <div class="spacing sp-md"></div>

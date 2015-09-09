@@ -1,4 +1,4 @@
-
+<?php if(ICL_LANGUAGE_CODE=='en') { ?><?php $quienes = 'Who we are' ?><?php $productos = 'Products' ?><?php $noticias = 'News' ?><?php $contacto = 'Contact' ?><?php $busca = 'Find a product' ?><?php $idiomas = 'Languages' ?><?php $aviso = 'Legal' ?><?php $siguenos = 'Follow us' ?><?php $noencuentra = 'Need help?' ?><?php $preguntar = 'Contact' ?><?php } else { ?><?php $quienes = 'Quiénes somos' ?><?php $productos = 'Productos' ?><?php $noticias = 'Noticias' ?><?php $contacto = 'Contacto' ?><?php $busca = "Busca un producto" ?><?php $idiomas = 'Idiomas' ?><?php $aviso = 'Aviso legal' ?><?php $siguenos = 'Síguenos' ?><?php $noencuentra = '¿No lo encuentras?' ?><?php $preguntar = 'Preguntar' ?><?php } ?>
 <footer>
   <div class="block container-fluid block-wide light-color">
     <div id="mainfooter" class="row dark-bgcolor withmap portfolio thumbs-wide">
@@ -78,7 +78,7 @@
 </footer>
 <script>
   //<![CDATA[
-  document.write("<script async src='//HOST:8888/wp-content/themes/Cantisa/browser-sync-client.1.3.7.js'><\/script>".replace(/HOST/g, location.hostname));
+  document.write("<script async src='//HOST:8888/wp-content/themes/cantisa-dev/browser-sync-client.1.3.7.js'><\/script>".replace(/HOST/g, location.hostname));
   //]]>
   
 </script>

@@ -1,3 +1,5 @@
+  //- PRUEBAS
+
 
 nav.navbar.nav-white.nav-nochange.nav-lg
   .container-fluid
@@ -20,10 +22,33 @@ nav.navbar.nav-white.nav-nochange.nav-lg
           a(href!="<?php echo site_url(); ?>/quienes")
             span
               - echo $quienes
-        li
-          a(href!="<?php echo site_url(); ?>/productos")
+        li.dropdown
+          a.dropdown-toggle(href!="<?php echo site_url(); ?>/productos",role="button",aria-haspopup="true",aria-expanded="false")
             span
               - echo $productos
+          ul.dropdown-menu
+            - $terms = get_terms( 'tipo_de_producto' );
+            - if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+            
+              -     foreach ( $terms as $term ) {
+              -       $imagenf = get_tax_meta($term,'ba_image_field_id',true);
+              -       if ($imagenf) {
+              -       $imagen = array_values($imagenf)
+              -       $imagen = $imagenf[1]
+              -       } else {
+              -       $imagen = get_template_directory_uri() . '/assets/misc/10-cantisa/web/home.jpg';
+              -       }
+              -       $nombre = $term->name;
+              -       $deslug = $term->slug;
+              -       $furl = get_site_url() . '/familia/?family=' . $deslug;
+              
+            li
+              a(href!="<?php echo $furl; ?>")
+                - echo $nombre
+
+            - }
+            - }
+
         li
           a(href!="<?php echo site_url(); ?>/noticias")
             span

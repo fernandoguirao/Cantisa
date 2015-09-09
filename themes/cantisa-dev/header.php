@@ -4,6 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> <?php if ( is_home() && is_front_page() ) { ?><?php bloginfo('title') ?><?php } else { ?><?php echo get_the_title() ?><?php echo " « " ?><?php bloginfo('title')	 ?><?php } ?>
   </title>
+  <meta name="description" content="<?php bloginfo('description'); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_template_directory_uri(); ?>/assets/misc/10-cantisa/apple-touch-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_template_directory_uri(); ?>/assets/misc/10-cantisa/apple-touch-icon-60x60.png">
@@ -33,7 +34,7 @@
   Please <a href="http://browsehappy.com/">upgrade your browser</a>
   to improve your experience.
 </p><![endif]-->
-<div id='view'><?php if(ICL_LANGUAGE_CODE=='en') { ?><?php $quienes = 'Who we are' ?><?php $productos = 'Products' ?><?php $noticias = 'News' ?><?php $contacto = 'Contact' ?><?php $busca = 'Find a product' ?><?php $idiomas = 'Languages' ?><?php $aviso = 'Legal' ?><?php $siguenos = 'Follow us' ?><?php $noencuentra = 'Need help?' ?><?php $preguntar = 'Contact' ?><?php } else { ?><?php $quienes = 'Quiénes somos' ?><?php $productos = 'Productos' ?><?php $noticias = 'Noticias' ?><?php $contacto = 'Contacto' ?><?php $busca = "Busca un producto" ?><?php $idiomas = 'Idiomas' ?><?php $aviso = 'Aviso legal' ?><?php $siguenos = 'Síguenos' ?><?php $noencuentra = '¿No lo encuentras?' ?><?php $preguntar = 'Preguntar' ?><?php } ?>
+<div id='view'><?php if(ICL_LANGUAGE_CODE=='en') { ?><?php $quienes = 'Who we are' ?><?php $productos = 'Products' ?><?php $noticias = 'News' ?><?php $contacto = 'Contact' ?><?php $busca = 'Find a product' ?><?php $idiomas = 'Languages' ?><?php $aviso = 'Legal' ?><?php $siguenos = 'Follow us' ?><?php $noencuentra = 'Need help?' ?><?php $preguntar = 'Contact' ?><?php } else { ?><?php $quienes = 'Quiénes somos' ?><?php $productos = 'Productos' ?><?php $noticias = 'Noticias' ?><?php $contacto = 'Contacto' ?><?php $busca = "Busca un producto" ?><?php $idiomas = 'Idiomas' ?><?php $aviso = 'Aviso legal' ?><?php $siguenos = 'Síguenos' ?><?php $noencuentra = '¿No lo encuentras?' ?><?php $preguntar = 'Preguntar' ?><?php } ?> //- PRUEBAS
 <nav class="navbar nav-white nav-nochange nav-lg">
   <div class="container-fluid">
     <div class="blackdetail"></div>
@@ -44,15 +45,19 @@
     <div class="collapse navbar-collapse sans uppercase">
       <ul class="nav navbar-nav navbar-right navbar-fixedright black-bgcolor white-color">
         <li><a href="<?php echo site_url(); ?>/quienes"><span><?php echo $quienes ?></span></a></li>
-        <li><a href="<?php echo site_url(); ?>/productos"><span><?php echo $productos ?></span></a></li>
+        <li class="dropdown"><a href="<?php echo site_url(); ?>/productos" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><span><?php echo $productos ?></span></a>
+          <ul class="dropdown-menu"><?php $terms = get_terms( 'tipo_de_producto' ); ?><?php if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){ ?><?php foreach ( $terms as $term ) { ?><?php $imagenf = get_tax_meta($term,'ba_image_field_id',true); ?><?php if ($imagenf) { ?><?php $imagen = array_values($imagenf) ?><?php $imagen = $imagenf[1] ?><?php } else { ?><?php $imagen = get_template_directory_uri() . '/assets/misc/10-cantisa/web/home.jpg'; ?><?php } ?><?php $nombre = $term->name; ?><?php $deslug = $term->slug; ?><?php $furl = get_site_url() . '/familia/?family=' . $deslug; ?>
+            <li><a href="<?php echo $furl; ?>"><?php echo $nombre ?></a></li><?php } ?><?php } ?>
+          </ul>
+        </li>
         <li><a href="<?php echo site_url(); ?>/noticias"><span><?php echo $noticias ?></span></a></li>
-        <li><a href="<?php echo site_url(); ?>/contacto"><span><?php echo $contacto ?></span></a></li>
-        <li><a id="searchBtn" href="#" class="main-bgcolor"><span class="fa fa-search"></span></a></li>
+        <li><a href="<?php echo site_url(); ?>/contacto"><span><?php echo $contacto ?></span></a></li><?php if (is_page( 'productos' )|| is_page( 'familia' )|| 'cantisa_producto' == get_post_type() ) { } else { ?>
+        <li><a id="searchBtn" href="#" class="main-bgcolor"><span class="fa fa-search"></span></a></li><?php } ?>
       </ul>
     </div>
   </div>
 </nav>
-<div id="buscador">
+<div id="buscador" style="<?php if (is_page( 'productos' )|| is_page( 'familia' )|| 'cantisa_producto' == get_post_type()) { ?>margin-top: 0px; opacity: 1;<?php } ?>"> 
   <div class="block block-stretch container-fluid gray-bgcolor">
     <div class="row">
       <div class="col-sm-8">
@@ -73,10 +78,10 @@
       <div class="col-sm-4 align-right">
         <ul class="list list-horizontal">
           <li>
-            <p class="bold"><?php echo $noencuentra ?>
+            <p class="bold"><?php //echo $preguntar ?>
             </p>
           </li>
-          <li><a href="<?php echo site_url(); ?>/contacto" class="btn btn-lightgray"><?php echo $preguntar ?></a></li>
+          <li><a href="<?php echo site_url(); ?>/contacto" style="margin-top:4px;" class="btn btn-lightgray"><?php echo $noencuentra ?></a></li>
         </ul>
       </div>
     </div>
@@ -102,7 +107,7 @@
             <li><a href="<?php echo site_url(); ?>/contacto" target="_blank">
                 <p class="sans-2 uppercase italic"><?php echo $contacto ?>
                 </p></a></li>
-            <li><a href="<?php echo site_url(); ?>">
+            <li><a href="http://217.125.51.89/equiv/">
                 <p class="sans-2 uppercase italic"><?php echo $busca ?>
                 </p></a></li>
           </ul>

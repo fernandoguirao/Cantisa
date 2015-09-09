@@ -14,6 +14,7 @@
         img.img-full(src!="<?php the_field('foto_principal');?>",alt="")
         .block.main-bgcolor.light-color
           .align-right
+            - if (get_field('grosor')): 
             .btn.btn-bordered.btn-nolink
               p.text-xl.lowercase
                 <?php the_field('grosor'); ?>
@@ -24,6 +25,7 @@
                   | espesor
                   - }
             .spacing.sp-sm
+            - endif;
             p.lines
               - the_field('atributo_breve_1');
             p.lines
@@ -84,13 +86,13 @@
           .spacing.sp-xs
           - while ( have_rows('acabados') ) : the_row();
           li
-            .titulo.btn.btn-block.btn-lightgray
+            .titulo.btn.btn-block.btn-lightgray.cp-modal(data-toggle="modal",data-target="#detalleproducto")
               - the_sub_field('titulo');
             .detalles.hidden
               .col-sm-12
                 - the_sub_field('descripcion');
                 a.main-color(href!="<?php the_sub_field('detalles');?>",target="_blank")
-                  i.fa.fa-download
+                  i.fa.fa-download(style="margin-right:6px;")
                   - if(ICL_LANGUAGE_CODE=='en') {
                   | Technical details
                   - } else {
@@ -100,6 +102,7 @@
               .col-sm-12
                 - the_sub_field('imagenes');
           - endwhile;
+          .spacing.sp-sm
           - else :
           - endif;
         //- FIN ACABADOS REPEATER
@@ -117,13 +120,14 @@
           .spacing.sp-xs
           - while ( have_rows('chapas') ) : the_row();
           li
-            .titulo.btn.btn-block.btn-lightgray
+            .titulo.btn.btn-block.btn-lightgray.cp-modal(data-toggle="modal",data-target="#detalleproducto")
               - the_sub_field('titulo');
             .detalles.hidden
               .col-sm-12
-                - the_sub_field('descripcion');
+                p.descripcion
+                  - the_sub_field('descripcion');
                 a.main-color(href!="<?php the_sub_field('detalles');?>",target="_blank")
-                  i.fa.fa-download
+                  i.fa.fa-download(style="margin-right:6px;")
                   - if(ICL_LANGUAGE_CODE=='en') {
                   | Technical details
                   - } else {
@@ -133,14 +137,16 @@
               .col-sm-12
                 - the_sub_field('imagenes');
           - endwhile;
+          .spacing.sp-sm
           - else :
           - endif;
+        
         //- FIN ACABADOS REPEATER
         .detalleOut.col-sm-6.hidden
           .here
           .spacing.sp-xs
           .btn.btn-lightgray.text-right
-            i.fa.fa-chevron-left
+            i.fa.fa-chevron-left(style="margin-right:6px;")
             - if(ICL_LANGUAGE_CODE=='en') {
             | Back to the sheet
             - } else {
@@ -165,3 +171,31 @@
         a.img-full.background-full.thumb.thumb-sm(href!="<?php echo the_field('foto4'); ?>",rel="lightbox[producto]",title="",style!="background-image:url('<?php the_field('foto4');?>')")
       - }
 
+
+#detalleproducto.modal.fade(tabindex="-1",role="dialog",aria-labelledby="myModalLabel")
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.btn.btn-main(type='button',data-dismiss="modal")
+          - if(ICL_LANGUAGE_CODE=='en') {
+          | Back
+          - } else {
+          | Volver
+          - }
+        h3.modal-title Modal title
+      .modal-body
+        
+
+      .modal-footer
+
+script.
+  var mbody = $('#detalleproducto .modal-body');
+  var mtitulo = $('#detalleproducto .modal-title');
+  var mheader = $('#detalleproducto .modal-header');
+  $('.cp-modal').click(function(){
+    var imgg = $(this).next().find('img');
+    mheader.attr('style','background-image:url('+imgg.attr('src')+');background-size:cover;background-position:center;');
+
+    mbody.html($(this).next().html());
+    mtitulo.html($(this).html());
+  })

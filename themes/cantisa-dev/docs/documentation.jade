@@ -1,0 +1,505 @@
+<!-- BLOQUES -->
+
+.block.container-fluid
+  
+  <!-- Opciones generales -->
+
+    //- Que ocupe todo el height
+    .block-full
+
+    //- Si queremos que tenga un borde
+    .block-bordered
+
+    //- Centrar el contenido
+    .center
+
+    //- Si no queremos padding (para contenidos al 100%)
+    .block-wide
+    //- Si queremos un contenido fijo que podamos usar con parallax
+    .block-fixed
+
+  <!-- Imagen de fondo, color y textura -->
+
+    //- Si hay una imagen de fondo:
+    .background-full(style="background-image:url('')")
+    //- Si esa imagen no es un contenedor
+    .img.background-full
+
+    //- Si hay imagen de fondo en alguna esquina. Para definir la posición, añadimos a la img las clases .bg-right/left, y .bg-top/bottom o sólo .bg-center si la queremos centrada 
+    | .bg-img
+      img.bg-right.bg-bottom(src="assets/images/background-right.png",alt="")
+
+    //- Si hay una capa semitransparente
+    .background-full.bg-alpha-light/dark/main/accent/blue/pink/green/yellow/red/purple
+      .bg
+    //- Si queremos que sea más o menos opaca añadimos
+    .bg-alpha-more / .bg-alpha-less
+
+    //- Si queremos que la imagen de fondo tenga efecto parallax, al parent de la imagen le añadimos:
+    .bg-fixed -> Ojo no debe coincidir con la capa .block, debe estar debajo. Si puede en cambio coincidir con .col-
+    
+    //- Si queremos añadir una imagen con blur. La imagen con background debe añadirse al .bg
+    .bg-blur
+      .bg
+    
+    //- Si queremos una textura
+    .bg-texture
+      .bg
+
+    //- Si queremos que el fondo sea de un color plano
+    .dark-bgcolor / .main-bgcolor / .pink-bgcolor etc.
+
+  <!-- Columnas y filas -->
+    .row
+      .col-sm-12 / etc.
+      
+      //- Si queremos que las columnas estén completamente pegadas, añadimos al .block padre la clase .block-wide
+
+      //- Una columna de contenido
+      .column-1
+      //- Una columna más estrecha
+      .column-1-stretch
+      //- Una columna más ancha en tamaños de pantalla grandes
+      .column-1-wide
+
+      //- Dos columnas que pasan a una en pantallas pequeñas. Preferiblemente la segunda debe contener un .spacing.sp-vertical.sp-sm.visible-xs al principio para que en la versión vertical estén un poco separadas.
+      .col-sm-6
+
+      //- Tres columnas que pasan a una en pantallas pequeñas
+      .col-sm-4
+
+      //- Cuatro columnas que pasan a dos en pantallas pequeñas
+      .col-sm-3.col-xs-6
+
+      //- Cuatro columnas que pasan a una en pantallas pequeñas
+      .col-sm-3
+
+<!-- IMÁGENES -->
+  
+  //- Si es normal
+  img.img
+
+  //- Que llene su contenedor
+  img.img-full
+
+<!-- TIPOGRAFÍA -->
+  
+  //- Fuente serif principal: es la fuente por defecto
+  .serif
+
+  //- Fuente sans principal
+  .sans
+
+  //- Fuente sans alternativa (para titulares)
+  .sans-2
+
+  //- Color de texto (aplicable a padre también)
+  .colorname-color (ejemplo: .blue-color)
+
+  //- Tamaños especiales (además de h1, h2, h3, h4, h5, p, span, pre, quote, i )
+  .text-sm / .text-lg
+
+  //- Otros modificadores del texto
+  .uppercase -> mayúsculas
+  .lined -> con borde bottom de color
+  .lined-left/right -> con borde de color a la izquierda o la derecha
+  .line-between -> Encaja el texto entre dos líneas
+  .paragraph -> tendrá más line-height de lo normal
+  .align-left / right -> alineado a la izquierda / derecha
+  
+  //- Texto con un fondo de color
+  h2.sans-2  
+    span.text-block-bgcolor.darkmain-bgcolor.accent-color Texto
+  //- Grosores (sin modificador, regular)
+  .lighter / .bold / .bolder 
+
+<!-- BOTONES -->
+
+  <!-- Tipos de botón -->
+
+    //- Botón con borde y transparente
+    .btn.btn-bordered
+
+    //- Botón sin bordes redondeados
+    .btn.btn-square
+
+    //- Botón con bordes circulares
+    .btn.btn-round
+
+    //- Botón circular
+    .btn.btn-circle // .btn.btn-circle-btn-small
+  
+  <!-- Tamaños de botón -->
+    .btn-stretch
+    .btn-xs
+    .btn-sm
+    .btn-md
+    .btn-lg
+    .btn-xl
+
+  //- Si el botón lleva un icono a la derecha, anidamos un
+  span.icon-right.fa.fa-cloud
+
+  //- Si el icono a la derecha debe aparecer en hover, al botón le añadimos
+  .btn.icon-show
+    span.icon-right.fa etc.
+
+  //- Si el cursor no debe ser pointer
+  .btn-nolink
+
+//- LAYOUTS ESPECIALES
+
+<!-- ROMBOS -->
+
+  //- Si quiero que aparezca como titular, lo incluimos en el bloque anterior al bloque que queremos que titule
+  //- Definimos el tamaño del rombo en la clase diamond-size-sm/md/lg/xl
+  //- Si queremos que quede dentro del bloque incluimos el rombo al principio del bloque y le añadimos la clase .diamond-top
+
+  .diamond-size-md
+    a.diamond.light-color(style="background-image:url('assets/images/background-full.png');",href="")
+      .content
+        h4.sans.uppercase.bold Call to action
+        span.glyphicon.glyphicon-chevron-down
+
+<!-- IMAGEN EN UN LATERAL Y BLOQUE TEXTO EN OTRO, TODO AL 100% -->
+
+.block.container-fluid.main-bgcolor.light-color
+  .row
+    .col-sm-5.background-full.img-float.fl-right(style="background-image:url('http://3.bp.blogspot.com/-oKqDLs8j8NI/UWHA--0IL9I/AAAAAAAAGWo/TkaMo3Q-Sdo/s1600/ggffg.jpg');")
+    .col-sm-7.col-sm-offset-5
+      h2.sans-2.text-lg.bold El 89% de las empresas
+
+  //- Imagen con un borde recortado en forma de triángulo (efecto slice)
+  //- Importante, si hay bg-fixed debemos añadir todo esto al contenedor padre con bg-fixed
+  //- Añadimos al .img-float estas clases: .slice-corner.slice-main por defecto borde derecho, si queremos que sea el borde izquierdo añadimos .slice-left y el color con .slice-green etc. Si la imagen tiene el estilo fixed, mejor le añadimos el border a la columna de texto.
+  //- Además, si queremos que el contenido quede un poco más encajado lo anidamos en .col-sm-11.col-sm-offset-1
+
+<!-- ICONOS -->
+
+  //- Para añadir un steady icon: .steady y la clase del icono .icon-
+  //- Para añadir un font awesome icon: .fa y la clase del icono
+  //- Si el icono va a la derecha de un texto añadimos .icon-right y si va a la izquierda .icon-left
+
+<!-- BLOQUES CON ICONOS -->
+
+ //- Ilustraciones con fondo de color -->
+ //- Los iconos ilustración se eligen de la carpeta images/flat-icons
+ //- Si queremos que el formato de la caja de los iconos sea cuadrada eliminamos la clase display-cell
+ //- La imagen se puede sustituir por un icono: span.steady.icon-box
+ //- Si queremos que no tengan fondo de color eliminamos yellow-bgcolor y icon-bgcolor
+ //- Cada fila del layout debe anidarse en un row
+ //- Si queremos que todo el contenedor sea de un color añadimos a icon-block la clase icon-fullcolor y el color del fondo
+ //- Si queremos que el contenedor de la imagen sea más grande añadimos la clase .icon-lgleft
+
+ .block.container-fluid.icons-block
+   .row
+     .col-sm-6.icon-block.icon-bgcolor
+       .icon-container.display-cell.yellow-bgcolor
+         img(src="assets/images/flat-icons/icons_129.png",alt="")
+       .text-container.display-cell
+         p Este es el texto
+
+<!-- TOPBAR / NAVBAR -->
+
+  //- Si no queremos que sea fixed le quitamos la clase navbar-fixed-top
+  //- Añadimos el color que queramos nav-transparent / nav-white etc.
+  
+  //- Estructura básica
+  nav.navbar.nav-transparent.navbar-fixed-top.light-color
+    .container-fluid
+      //- Brand
+      .navbar-header.nav-headerboxed.main-bgcolor
+        a.navbar-brand(href="#")
+          img.brand(src="assets/images/logo-bueninvento.png")
+      //- Menu
+      ul.nav.navbar-nav.navbar-right.visible-xs
+        li
+          a.light-color.link(href="#",data-toggle="sidebar")
+            i.fa.fa-bars.fa-lg
+      .collapse.navbar-collapse.sans.uppercase
+        //- Left menu
+        ul.nav.navbar-nav
+          li.active
+            a(href="#") Link
+              span.sr-only Current
+          li
+            a(href="#") Link
+        //- Right menu
+        ul.nav.navbar-nav.navbar-right
+          li.active
+            a(href="#") El problema
+          li
+            a(href="#") Solución
+          li
+            a(href="#") Paquetes
+          li.dropdown
+            a.dropdown-toggle(href="#",data-toggle="dropdown",role="button",aria-expanded="false") Dropdown
+              span.caret
+            ul.dropdown-menu(role="menu")
+              li
+                a(href="#") Action
+              li
+                a(href="#") Another action
+              li.divider
+              li
+                a(href="#") Another action
+          li
+            .btn.btn-main.btn-sm.bold Contacta
+            //- Form
+          li
+            form.form-bordered.navbar-form.navbar-left(role="search")
+              .form-group
+                input.form-control(type="text",placeholder="Search")
+              button.btn.btn-bordered(type="submit") Submit
+    //- OPCIONES
+    //- Si queremos que no cambie de color al hacer scroll
+    .nav-nochange
+    //- Tamaños:
+    //- normal, sin modificar
+    //- más grande / más pequeño, etc.
+    .nav-lg / .nav-sm / etc
+    //- Si queremos que el submenú derecho se pegue al margen derecho le añadimos (a .navbar-right)
+    .nav-fixedright
+    //- Si queremos un logo centrado más grande que se hace pequeño en scroll
+    nav.navbar.nav-transparent.navbar-fixed-top.light-color.nav-brandBigCentered.nav-nochange
+      .container-fluid
+        .navbar-header
+          a.navbar-brand(href="#section2",data-scroll="true")
+            .spacing.sp-vertical.sp-md
+            h2.sans-2.uppercase.lighter PlayGrown
+            .spacing.sp-vertical.sp-md
+        ul.nav.navbar-nav.navbar-right.hidden-xs
+          li
+            p Opción
+
+<!-- ANIMACIONES DE ENTRADA -->
+  //- Al elemento que queremos animar le añadimos
+  .anim
+  //- modificadores
+  .from-top / .from-left / .from-bottom / .from-right / .from-center
+  .anim-slow / .anim-fast
+  .anim-far
+  .anim-near
+  .anim-zoom
+  .anim-zoomOut
+  .anim-rotate
+  .anim-blink
+  .zoomClass / .zoomHover (si queremos que sea en hover)
+  
+  //- Si queremos encadenar varias:
+  .chain-container / Añadimos un div padre (que será el que dispare las animaciones al hacer scroll hasta él)
+    .chain-anim(data-delay="3") / Cada div llevará esta clase y las clases de animación de arriba (from-top etc.). El data-delay indica el orden de animación.
+<!-- SCROLL TO LINK -->
+  a(href="#section2",data-scrollTo="true")
+
+<!-- VIDEO BACKGROUND -->
+  //- Añadimos al div donde debe cargarse esto:
+  #videoBg
+  //- El snippet de javascript:
+  //- VIDEO BACKGROUND
+  script.
+    videoBackground("assets/misc/demo02/","videoplane","http://galisteoaviation.com/assets/img/galisteo/section-01.jpg");
+
+<!-- TEAM -->
+
+  .block.lightgray-bgcolor.container-fluid.icons-block.team-block
+    .row
+      .col-sm-12.col-md-6.icon-block.dark-color.icon-bgcolor
+        .icon-container.background-full(style="background-image:url('http://galisteoaviation.com/assets/img/galisteo/juan-jose-mesia.jpg');")
+          .team-links
+            a.btn.btn-block.btn-bordered.sans-2.btn-dark.icon-show.btn-stretch(href="") Linkedin
+              span.icon-right.fa.fa-linkedin
+            a.btn.btn-block.btn-bordered.sans-2.btn-dark.icon-show.btn-stretch(href="") Contact
+              span.icon-right.fa.fa-envelope
+            
+        .text-container
+          p.sans-2.uppercase.bolder
+            i Juan Jose Mesía
+          p.sans.text-sm.second-line.uppercase Co-founder, executive partner and president
+          p.text-sm Originally from Spain but educated in the United States and Belgium, Juan Jose holds a Bachelor of Economics from Boston University and an MBA from the University of Louvain, Belgium.
+
+<!-- PORFOLIO -->
+  //- 1. Tipo bloque completo con imagen de fondo
+  .block.container-fluid.block-wide.lightgray-bgcolor
+    .row.portfolio.thumbs-wide
+      a.col-sm-4.yellow-bgcolor.thumb.zoomHover.center(href="")
+        .img.background-full.bg-alpha-dark(style="background-image:url('assets/misc/demo02/section-01.jpg');")
+          .bg
+        .text-content
+          h3.lined.light-color.title
+            span.steady.icon-measure
+            | Monument Manufacturing
+          p
+            .btn.btn-sm.btn-bordered Read
+  //- 2. Si queremos que abra un bloque con contenido añadimos al <a> un .accordion-show y un href="#" con el id del bloque del contenido. Debajo del bloque con los thumbs añadimos el siguiente bloque (el id del href al que nos referimos es el del contenedor que ahora vemos:
+  .accordion
+    #acc-01.block.container-fluid.white-bgcolor.dark-color.accordion-container.acc-closed
+      .row
+        .column-1.acc-content
+          h2.sans-2 Parts & Monument
+            br
+            span.accent-color.bold.uppercase Manufacturing
+          p To translate an exceptional Head of State aircraft interior design into a truly ast
+  //- 3. Thumbs con iconos y colores planos centrados
+  .block.container-fluid.block-wide
+    .row.portfolio
+      .col-sm-8.col-sm-offset-2.center
+        .col-sm-4.yellow-bgcolor.thumb
+          img(src="assets/images/icon.png",alt="")
+  //- 4. Si queremos un espacio entre los thumbs
+  .row.portfolio.thumbs-spaced
+  //- OPCIONES
+  //- El thumb puede ser grande -> thumb-lg
+<!-- FOOTERS -->
+//- Si no queremos mapa o imagen en el lado derecho eliminamos la clase .withmap.
+//- Si queremos que haya varios logos en varias columnas, les añadimos la clase .img
+footer
+  .container-fluid.block-wide.light-color
+    //- FIRST FOOTER
+    .row.dark-bgcolor#mainfooter.withmap
+      .col-sm-8
+        .col-sm-3.col-sm-offset-1
+          h3.accent-color bueninvento
+          //- img.brand(src="assets/images/logo-bueninvento.png")
+        .col-sm-3
+          p.text-small Síguenos
+          p.social-icons
+            a(href="")
+              span.fa.fa-facebook
+            a(href="")
+              span.fa.fa-twitter
+            a(href="")
+              span.fa.fa-github
+            a(href="")
+              span.fa.fa-instagram
+            a(href="")
+              span.fa.fa-dribbble
+            a(href="")
+              span.fa.fa-wordpress
+        .col-sm-4
+          p.text-small Ven a visitarnos
+          p.sans.small Bueninvento
+            | Calle Gascó Oliag 8, 8
+            | 46010 Valencia
+            | Fijo : 96 361 57 13
+            | Móvil : 690 708 181
+            | bueninvento@bueninvento.es
+      .col-sm-4.map.background-full(style="background-image:url('assets/images/map.png')")
+    //- SECOND FOOTER
+    .row.main-bgcolor#subfooter
+      .col-sm-8
+        p.text-small.center © 2015 Bueninvento SL
+          | · 
+          a.light-color(href="") Privacy 
+          | · 
+          a.light-color(href="") Contact
+      a.btn.btn-block.btn-main-dark.col-sm-4.btn-square(href="")
+        h4
+          span.sans.bolder Escríbenos
+          span.icon-right.glyphicon.glyphicon-chevron-right
+
+<!-- SLICK SLIDER -->
+  //- Incluimos el código. La id debe ser única y con ella inicializaremos la función de js: slickInit('#idunica');
+  //- Opciones: .slide-block para el tipo de slide centrado
+  #idunica.block.block-wide.container-fluid.dark-color.slide-block
+    .sl-slide.background-full(style="background-image:url('assets/misc/demo02/section-04.jpg');")
+      .col-md-7.col-md-offset-5.col-sm-8.col-sm-offset-4
+        .contents.light-bgcolor
+          h3.serif-2.italic.bold.text-sm.lined Customized creative design
+          p.text-md At GALISTEO, our Interior Design Program is organized as a multi-phase iterative process, with each successive phase milestone narrowing towards a single holistic design solution.
+          .spacing.sp-vertical.sp-sm
+
+<!-- ESPACIOS -->
+  //- Verticales
+  .spacing.sp-md / .sp-sm etc.
+  //- padding
+  .pd-md / .pd-lg etc.
+
+<!-- SIDEBAR -->
+//- Añadimos al body las clases que definen si es sticky o no y su posición body.sd-left.sd-sticky
+.sidebar
+  .close-view.light-color
+    a.sans(href="#",data-toggle="sidebar") +
+  .block
+    .row
+      .block-1.center
+        .brand
+          h3.sans-2.uppercase.lighter.light-color PlayGrown
+          //- Si queremos una imagen:
+          //- img.img-full(src="assets/images/logo-bueninvento.png")
+        .spacing.sp-md
+        .side-menu
+          ul.nav-menu
+            li
+              a.btn.btn-bordered.btn-sm.icon-show.lighter.btn-block
+                i.sans-2 Home
+                span.icon-right.fa.fa-envelope 
+  .sidebar-footer
+    .block.alphablack-bgcolor.light-color
+      .row
+        .block-1.center
+          p.text-sm @2014 PlayGrownd
+  //- Si queremos un menú con formato lined 
+  ul.nav-menu.nav-lined.light-color.align-left
+    li
+      a(href="")
+        p.sans-2.uppercase.bold Home
+    li
+      a.active(href="")
+        p.sans-2.uppercase.bold Gallery
+      ul.sub-items
+        li
+          a(href="")
+            p.sans-2.light Sub section
+        li
+          a(href="")
+            p.sans-2.light Another section
+  //- Si queremos formato con borde entre enlaces
+  ul.nav-menu.nav-bordered
+  <!-- Para los submenús, si queremos que sea en formato desplegable horizontal lo hacemos así: -->
+    //- El a que lo lanza:
+    a(href="#nombremenu",data-toggle="submenu")
+    //- El menú que sale, al mismo nivel de indentación que el menú principal:
+    ul#subnav1.subnav.nav-menu.nav-bordered.light-color.align-left
+            li
+              a(href=".main-nav",data-toggle="subclose")
+                p.sans-2.uppercase.bold Close
+            li
+              a.active(href="")
+                p.sans-2.uppercase.bold Gallery
+
+<!-- IPHONE CASES CON SCREENSHOTS -->
+//- SISTEMA ANTIGUO DEPRECATED
+.iphone-column.col-sm-4.center
+  .btn.btn-main-dark.btn-icon
+    img(src="assets/misc/demo06/hello.png")
+  .spacing.sp-sm
+  .spacing.sp-sm
+  .iphone-case
+    img.iphone.img.img-full(src="assets/misc/demo06/iphone.png")
+    img.screenshot.img.img-full(src="assets/misc/demo06/hello-screen.png")
+//- SISTEMA NUEVO --- GOOD!
+.col-sm-4.phone-col
+  .phone-cont
+    .screenshot
+      img.img(src="assets/misc/demo08/screen2.png")
+.col-sm-4.phone-col
+  .phone-cont
+    .screenshot
+      iframe(src="http://galisteoaviation.com")
+
+<!-- QUOTE -->
+  //- Con fondo semitransparente
+  .quote.bg-alpha-dark
+    p hola
+  &.full-width -> Full width (sin márgenes)
+
+<!-- FORMULARIOS -->
+
+//- INPUT CON BOTÓN RECTANGULAR
+form.box-form
+  .input-group
+    input.form-control(type="text",placeholder="Busca algo")
+    span.input-group-btn
+      button.btn.btn-main(type="button")
+        span.fa.fa-search

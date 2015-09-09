@@ -1,0 +1,353 @@
+/* NAVBAR STYLES */
+
+/* Transitions, if not mobile */
+.notmobile {
+  .navbar {
+    .navbar-header {
+      &:before {
+        width:100%!important;
+        .transition(transform .4s @easing);
+      }
+    }
+    &:before {
+      .transition(transform .4s @easing);
+    }
+    .navbar-nav {
+      li {
+        a:not(.btn) {
+          .transition(transform .4s @easing);
+        }
+      }
+    }
+  }
+}
+
+/*If mobile, alternative without transitions*/
+.mobile {
+  .navbar {
+    .navbar-header {
+      &:before {
+        width:100%!important;
+      }
+    }
+    &:before {
+      .opacity(0);
+    }
+    &.nav-white{
+      &:before {
+        .opacity(1);
+      }
+    }
+    .navbar-nav {
+      li {
+        a {
+        }
+      }
+    }
+  }
+}
+
+// General styles for navbar
+.navbar {
+  // Positioning: ¿needed?
+  left:inherit;
+  right:inherit;
+  width:100%;
+  .z-index(2);
+
+  &.nav-superior {
+    margin-bottom: 0;
+    min-height: 38px;
+    z-index: 4;
+    border-radius: 0!important;
+    li {
+      a {
+        font-size: 11px;
+        text-transform: uppercase;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        i {
+          font-size: 16px;
+        }
+        &:hover {
+          background-color: rgba(0,0,0,.2);
+        }
+      }
+    }
+    form {
+      margin:0;
+      input {
+        border-color: transparent!important;
+        background-color: rgba(0,0,0,.2)!important;
+        border-radius: 0;
+      }
+    }
+  }
+  // If we want a logo bigger at the top of the page, and smaller on scroll
+  &.nav-brandBigCentered {
+    &:before {
+      height:77px;
+      top:-77px;
+    }
+    text-align: center;
+    .navbar-header {
+      .transition(transform .3s);
+      position: relative;
+      margin: 0 auto;
+      display: inline-block;
+      float: none;
+      overflow: visible;
+      top:0;
+      .scale(1.5);
+      .navbar-brand {
+        padding-top:32px;
+        margin-left: 5px;
+      }
+    }
+    .navbar-right {
+      position: absolute;
+      right: 0;
+      top: 10px;
+      &:last-child {
+        margin-right:0;
+      }
+      &.visible-xs {
+        margin-right: 15px;
+      }
+    }
+  }
+  // End of the general styles for the logo resized
+  .nav-centered {
+    float: none;
+    display: inline-block;
+  }
+  /* Navbar header, general styles */
+
+  .navbar-header {
+    padding:0 40px;
+    background-color:transparent;
+    position: relative;
+    .brand {
+      max-width:168px;
+      max-height: 65px;
+      margin-top:-26px;
+    }
+    /* Box background for colored version */
+    &.nav-headerboxed {
+      text-align:center;
+      margin-left:-15px;
+      @media(max-width:@screen-sm-max){
+        padding: 0 27px;
+      }
+      .brand {
+        max-height: 30px;
+        margin-top: -5px;
+      }
+      &.main-bgcolor {
+        &:before {
+          background-color:@main;
+        }
+      }
+      // Before layer for animation
+      &:before {
+        width:100%;
+        height: 90px;
+        position: absolute;
+        content:"";
+        .transform(translate(0,-120px));
+        left:0;
+        .z-index(-2);
+      }
+    }
+  }
+
+  .navbar-nav {
+    li {
+      &.active {
+        a:before {
+          width: 100%;
+          position: absolute;
+          height: 3px;
+          content: "";
+          bottom: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+  .btn {
+    margin-top:6px;
+  }
+  .navbar-right {
+    .btn {
+      margin-right:40px;
+      margin-left:20px;
+    }
+    // Si queremos que se pegue al margen derecho
+    &.navbar-fixedright {
+      right: -15px;
+      position: relative;
+    }
+  }
+
+  /* Navbar background for colored versions */
+
+  &:before {
+    width:100%;
+    .transform(translate(0,-120px));
+    height: 90px;
+    position: absolute;
+    content:"";
+    // top:-50px;
+    left:0;
+    .z-index(-2);
+    .box-shadow(0 0 4px -2px black);
+    background-color:white;
+  }
+
+  /* Font alternatives */
+
+  .sans {
+    font-size:12.6px;
+    font-weight: @bold;
+  }
+
+  /*TYPES OF NAVBARS*/
+  
+  // A. SIZES
+  &.nav-lg {
+    li a {
+      padding-top:27px;
+      padding-bottom:27px;
+    }
+  }
+  // B. COLOURS
+  /* Transparent navbar */
+
+  &.nav-transparent {
+    .transform(translate(0,30px));
+    position:absolute;
+    /*@media(max-width:@screen-xs-max){
+      padding-top:10px;
+    }*/
+    .navbar-nav {
+      li {
+        a {
+          color:rgba(red(@light),green(@light),blue(@light),.8);
+          &:hover,&:active,&:focus {
+            background-color:transparent;
+            color:@light;
+          }
+        }
+        &.active {
+          a {
+            color:@light;
+            border-bottom:3px solid @accent;
+          }
+        }
+      }
+    }
+  }
+
+  /* White compact navbar */
+  /* Must contain a "container-fluid" and a bgcolor nav-header */
+  &.nav-white {
+    .transform(translate(0,0));
+    &:before {
+      .transform(translate(0,-40px));
+      background-color: white;
+    }
+    &.nav-brandBigCentered {
+      .navbar-header {
+        .transform(scale(1) translate(0,-83px));
+        .navbar-brand {
+          margin-left:0;
+        }
+      }
+      &:before {
+        .transform(translate(0,73px));
+      }
+    }
+    .nav-headerboxed {
+      &:before {
+        .opacity(1);
+        @media(max-width:@screen-xs-max){
+          width:200%!important;
+        }
+        .transform(translate(0,-40px));
+      }
+    }
+    // Button to toggle hidden sidebar
+    .align-right {
+      margin-top: 9px;
+    }
+    
+    .navbar-nav {
+
+      li {
+        a:not(.btn):not(.link) {
+          color:darken(@gray,25%);
+          span {
+            color:darken(@gray,25%);
+          }
+          i {
+            color:darken(@gray,25%);
+          }
+        }
+        a.link {
+          &:hover,&:active,&:focus {
+            background-color:transparent;
+          }
+        }
+        a.btn {
+          &:hover,&:active,&:focus {
+            background-color:transparent;
+          }
+        }
+        &.active {
+          a:before {
+            border-bottom:3px solid @main;
+          }
+        }
+      }
+    }
+  }
+
+  &.nav-nochange {
+    &.nav-transparent {
+      &:before {
+        background-color:transparent;
+        .box-shadow(none);
+      }
+    }
+    &.nav-white {
+      &:before {
+        background-color:white;
+        .box-shadow(none);
+      }
+    }
+  }
+
+  /* Dropdown styles */
+
+  ul.dropdown-menu,.navbar-nav .dropdown-menu {
+    background-color:@light;
+    padding:0;
+    .border-radius(0);
+    .divider {
+      margin:0;
+    }
+    li {
+      a {
+        color:darken(@gray,25%);
+        padding-top:10px;
+        padding-bottom:10px;
+        text-transform: initial;
+        &:hover {
+          background-color:@main;
+          color:@light;
+        }
+      }
+    }
+  }
+}

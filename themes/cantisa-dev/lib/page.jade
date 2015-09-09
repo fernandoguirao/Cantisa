@@ -1,0 +1,34 @@
+- get_header();
+- while ( have_posts() ) : the_post();
+- $page_id = get_queried_object_id()
+- $title = get_post_meta( $page_id, 'title',true)
+- $description = get_post_meta( $page_id, 'description',true)
+- $thumbnail = get_the_post_thumbnail( $page_id, 'full',true)
+- echo $thumbnail;
+
+#quienes
+  #banner.block.light-color.center.container-fluid.background-full.bg-alpha-dark.mimg(style!="background-image:url('<?php echo get_template_directory_uri(); ?>/assets/misc/10-cantisa/web/home.jpg')")
+    .bg
+    .row
+      .spacing.sp-md
+      .col-sm-12
+        h3.text-lg.lighter
+          span.bolder
+            - echo get_the_title()
+    .spacing.sp-sm
+  #nosotros.block.black-color.container-fluid
+    .row
+      .col-xs-12.col-sm-10.col-sm-offset-1
+        .spacing.sp-sm
+        p
+          - the_content();
+        .spacing.sp-sm2
+- endwhile; //resetting the page loop
+- wp_reset_query(); //resetting the page query
+script.
+  $fimg = $('img.attachment-full');
+  $src = $fimg.attr("src");
+  $fimg.remove();
+  $('.mimg').css("background-image", 'url("'+$src+'")');
+  
+- get_footer();

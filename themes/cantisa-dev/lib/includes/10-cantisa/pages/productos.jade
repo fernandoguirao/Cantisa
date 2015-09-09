@@ -1,0 +1,309 @@
+#productos
+  #banner.block.light-color.center.container-fluid.background-full.bg-alpha-dark(style!="background-image:url('<?php echo get_template_directory_uri(); ?>/assets/misc/10-cantisa/web/home.jpg')")
+    .bg
+    .row
+      .spacing.sp-xl
+      //- .col-sm-8.col-sm-offset-2
+      .column-1
+        h3.text-lg.lighter
+          - the_field('titulo')
+    .next-up
+      a.btn.btn-circle.btn-sm.from-top.anim-slow.anim(href='#listaproductos',data-scrollTo="true")
+        span.glyphicon.glyphicon-menu-down
+    .spacing.sp-lg
+  //- PRUEBAS
+  - $terms = get_terms( 'tipo_de_producto' );
+  - if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+  #listaproductos
+    - $contador = 1;
+    -     foreach ( $terms as $term ) {
+    -       $imagenf = get_tax_meta($term,'ba_image_field_id',true);
+    -       if ($imagenf) {
+    -       $imagen = array_values($imagenf)
+    -       $imagen = $imagenf[1]
+    -       } else {
+    -       $imagen = get_template_directory_uri() . '/assets/misc/10-cantisa/web/home.jpg';
+    -       }
+    -       $nombre = $term->name;
+    -       $deslug = $term->slug;
+    -       $descripcion = $term->description;
+    -       $furl = get_site_url() . '/familia/?family=' . $deslug;
+
+    - if ($contador == 1) {
+    a.block.container-fluid.darkgray-bgcolor.producto(href!="<?php echo $furl; ?>")
+      .row
+        .col-sm-4.bg-fixed
+          .background-full.img-float(style!="background-image:url('<?php echo $imagen?>')")
+        .col-sm-8.col-sm-offset-4.from-right.anim
+          .col-sm-12
+            h2.sans-2.pull-left.uppercase.lighter.black-color
+              span.bold
+                - echo $term->name;
+              //-
+                br
+                span.bold
+                  - the_field('titulo_linea_2');
+            //- .btn.btn-bordered.icon-show.btn-md.pull-right.btn-nolink
+              //- - the_field('grosor');
+              span.icon-right.fa.fa-chevron-right
+            .clearfix
+            .spacing.sp-lg
+            .col-sm-9.white-color
+              p.sans.text-lg
+                - echo $descripcion;
+              .spacing.sp-sm
+              p.sans
+                | + info 
+                span.fa.fa-chevron-right.prod-chev
+    - $contador++;
+    - } elseif ($contador ==2) {
+    a.block.container-fluid.dark-color.light-bgcolor.producto(href!="<?php echo $furl; ?>")
+      .row
+        .col-sm-4.anim.from-left
+          .col-sm-12.producto-left
+            h2.sans-2.uppercase.lighter
+              span.bold
+                - echo $term->name;
+            .spacing.sp-lg
+            p.sans.text-lg
+              - echo $descripcion;
+            .spacing.sp-sm
+            p.sans + info 
+              span.fa.fa-chevron-right.prod-chev
+        .col-sm-8.col-sm-offset-4.bg-fixed
+          .background-full.img-float(style!="background-image:url('<?php echo $imagen?>')")
+    - $contador++;
+    - } elseif ($contador ==3) {
+    a.block.container-fluid.main-bgcolor.producto(href!="<?php echo $furl; ?>")
+      .row
+        .col-sm-4.bg-fixed
+          .background-full.img-float(style!="background-image:url('<?php echo $imagen?>')")
+        .col-sm-8.col-sm-offset-4.from-right.anim
+          .col-sm-12
+            h2.sans-2.pull-left.uppercase.lighter.black-color
+              span.bold
+                - echo $term->name;
+              //-
+                br
+                span.bold
+                  - the_field('titulo_linea_2');
+            //- .btn.btn-bordered.icon-show.btn-md.pull-right.btn-nolink
+              //- - the_field('grosor');
+              span.icon-right.fa.fa-chevron-right
+            .clearfix
+            .spacing.sp-lg
+            .col-sm-9.white-color
+              p.sans.text-lg
+                - echo $descripcion;
+              .spacing.sp-sm
+              p.sans
+                | + info 
+                span.fa.fa-chevron-right.prod-chev
+    - $contador++;
+    - } else {
+    a.block.container-fluid.dark-color.light-bgcolor.producto(href!="<?php echo $furl; ?>")
+      .row
+        .col-sm-4.anim.from-left
+          .col-sm-12.producto-left
+            h2.sans-2.uppercase.lighter
+              span.bold
+                - echo $term->name;
+            .spacing.sp-lg
+            p.sans.text-lg
+              - echo $descripcion;
+            .spacing.sp-sm
+            p.sans + info 
+              span.fa.fa-chevron-right.prod-chev
+        .col-sm-8.col-sm-offset-4.bg-fixed
+          .background-full.img-float(style!="background-image:url('<?php echo $imagen?>')")
+    - $contador = 1;
+    - }
+    -     }
+  //- -     echo '</ul>';
+  - }
+  //- FIN PUREBAS
+
+  //-
+    #buscador.block.block-stretch.container-fluid.gray-bgcolor
+        .row
+          .col-sm-8
+            .row
+              .col-sm-4.align-right
+                h4.title.hidden-xs
+                  span.dark-color.bold.text-sm Encuentra tu producto
+              .col-sm-8
+                form.box-form.form-sm
+                  .input-group
+                    input.form-control(type="text",placeholder="Referencia producto")
+                    span.input-group-btn
+                      button.btn.btn-dark(type="button")
+                        span.fa.fa-search
+          .col-sm-4.align-right
+            ul.list.list-horizontal
+              li
+                p.bold ¿No lo encuentras?
+              li
+                .btn.btn-lightgray Preguntar
+  //-
+    #listaproductos
+      - query_posts('post_type=cantisa_producto');
+      - if (have_posts()): 
+      - $contador = 1;
+      - while (have_posts()): the_post();
+      
+      - if ($contador == 1) {
+      a.block.container-fluid.darkgray-bgcolor.producto(href!="<?php echo get_permalink(); ?>")
+        .row
+          .col-sm-4.bg-fixed
+            .background-full.img-float(style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .col-sm-8.col-sm-offset-4.from-right.anim
+            .col-sm-12
+              h2.sans-2.pull-left.uppercase.lighter.black-color
+                - the_field('titulo_linea_1');
+                br
+                span.bold
+                  - the_field('titulo_linea_2');
+              .btn.btn-bordered.icon-show.btn-md.pull-right.btn-nolink
+                - the_field('grosor');
+                span.icon-right.fa.fa-chevron-right
+              .clearfix
+              .spacing.sp-lg
+              .col-sm-9.white-color
+                p.sans.text-lg
+                  - the_field('descripcion_breve');
+                .spacing.sp-sm
+                p.sans
+                  | + info 
+                  span.fa.fa-chevron-right.prod-chev
+      - $contador++;
+      - } elseif ($contador ==2) {
+      a.block.container-fluid.dark-color.light-bgcolor.producto(href!="<?php echo get_permalink();?>")
+        .row
+          .col-sm-4.anim.from-left
+            .col-sm-12.producto-left
+              h2.sans-2.uppercase.lighter
+                - the_field('titulo_linea_1');
+                br
+                span.bold
+                  - the_field('titulo_linea_2'); 
+              .spacing.sp-lg
+              p.sans.text-lg
+                - the_field('descripcion_breve');
+              .spacing.sp-sm
+              p.sans + info 
+                span.fa.fa-chevron-right.prod-chev
+          .col-sm-8.col-sm-offset-4.bg-fixed
+            .background-full.img-float(style!="background-image:url('<?php the_field('foto_principal');?>')")
+      - $contador++;
+      - } elseif ($contador ==3) {
+      a.block.container-fluid.white-color.main-bgcolor.producto(href!="<?php echo get_permalink();?>")
+        .row
+          .col-sm-4.bg-fixed
+            .background-full.img-float(style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .col-sm-8.col-sm-offset-4.from-right.anim
+            .col-sm-12
+              h2.sans-2.pull-left.uppercase.lighter
+                - the_field('titulo_linea_1');
+                br
+                span.bold 
+                - the_field('titulo_linea_1');
+              .btn.btn-nolink.btn-bordered.icon-show.btn-md.pull-right
+                - the_field('grosor');
+                span.icon-right.fa.fa-chevron-right
+              .clearfix
+              .spacing.sp-lg
+              .col-sm-9
+                p.sans.text-lg
+                  - the_field('descripcion_breve');
+                .spacing.sp-sm
+                p.sans + info 
+                  span.fa.fa-chevron-right.prod-chev
+      - $contador++;
+      - } else {
+      a.block.container-fluid.dark-color.light-bgcolor.producto(href!="<?php echo get_permalink();?>")
+        .row
+          .col-sm-4.anim.from-left
+            .col-sm-12.producto-left
+              h2.sans-2.uppercase.lighter
+                - the_field('titulo_linea_1');
+                br
+                span.bold
+                  - the_field('titulo_linea_2');
+              .spacing.sp-lg
+              p.sans.text-lg
+                - the_field('descripcion_breve');
+              .spacing.sp-sm
+              p.sans + info 
+                span.fa.fa-chevron-right.prod-chev
+          .col-sm-8.col-sm-offset-4.bg-fixed
+            .background-full.img-float(style!="background-image:url('<?php the_field('foto_principal');?>')")
+      - $contador = 1;
+      - }
+      - endwhile;
+      - wp_reset_query();
+      - endif;
+
+    //-
+      #listaproductos.block.container-fluid.darkgray-bgcolor.producto
+        .row
+          .col-sm-4.bg-fixed
+            .background-full.img-float(style!="background-image:url('<?php echo get_template_directory_uri(); ?>/assets/misc/demo02/plane2.jpg');")
+          .col-sm-8.col-sm-offset-4.from-right.anim
+            .col-sm-12
+              h2.sans-2.pull-left.uppercase.lighter.black-color Rollos de
+                br
+                span.bold chapa de madera 
+              .btn.btn-bordered.icon-show.btn-md.pull-right.btn-nolink 2mm
+                span.icon-right.fa.fa-chevron-right
+              .clearfix
+              .spacing.sp-lg
+              .col-sm-9.white-color
+                p.sans.text-lg La chapa es seleccionada por tonos y calidades, los rollos van reticulados.
+                .spacing.sp-sm
+                p.sans.text-lg + info >
+
+      .block.container-fluid.dark-color.light-bgcolor.producto
+        .row
+          .col-sm-4.anim.from-left
+            .col-sm-12.producto-left
+              h2.sans-2.uppercase.lighter Rollos de
+                br
+                span.bold chapa de madera 
+              .spacing.sp-lg
+              p.sans.text-lg La chapa es seleccionada por tonos y calidades, los rollos van reticulados.
+              .spacing.sp-sm
+              p.sans.text-lg + info >
+          .col-sm-8.col-sm-offset-4.bg-fixed
+            .background-full.img-float(style!="background-image:url('<?php echo get_template_directory_uri(); ?>/assets/misc/demo02/plane2.jpg');")
+      .block.container-fluid.white-color.main-bgcolor.producto
+        .row
+          .col-sm-4.bg-fixed
+            .background-full.img-float(style!="background-image:url('<?php echo get_template_directory_uri(); ?>/assets/misc/demo02/plane2.jpg');")
+          .col-sm-8.col-sm-offset-4.from-right.anim
+            .col-sm-12
+              h2.sans-2.pull-left.uppercase.lighter Rollos de
+                br
+                span.bold chapa de madera 
+              a.btn.btn-bordered.icon-show.btn-md.pull-right(href="mailto:barnes@galisteoaviation.com,abbad@galisteoaviation.com") 2mm
+                span.icon-right.fa.fa-chevron-right
+              .clearfix
+              .spacing.sp-lg
+              .col-sm-9
+              p.sans.text-lg La chapa es seleccionada por tonos y calidades, los rollos van reticulados.
+              .spacing.sp-sm
+              p.sans.text-lg + info >
+
+    //-
+      .block.container-fluid.dark-color.light-bgcolor.producto
+        .row
+          .col-sm-4.anim.from-left
+            .col-sm-12.producto-left
+              h2.sans-2.uppercase.lighter Rollos de
+                br
+                span.bold chapa de madera 
+              .spacing.sp-lg
+              p.sans.text-lg La chapa es seleccionada por tonos y calidades, los rollos van reticulados.
+              .spacing.sp-sm
+              p.sans.text-lg + info >
+          .col-sm-8.col-sm-offset-4.bg-fixed
+            .background-full.img-float(style!="background-image:url('<?php echo get_template_directory_uri(); ?>/assets/misc/demo02/plane2.jpg');")

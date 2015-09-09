@@ -1,0 +1,31 @@
+.sidebar.dark-bgcolor
+  .close-view.light-color
+    a.sans(href="#",data-toggle="sidebar") +
+  .block
+    .row
+      .col-xs-12.center
+        //-.brand
+          img.img-full(src="assets/misc/demo06/logo.png")
+        .spacing.sp-md
+        .side-menu
+          ul#main-nav.main-nav.nav-menu.nav-lined.light-color.align-left
+            li
+              a(href!="<?php echo site_url(); ?>/quienes",data-toggle="sidebar",data-scrollTo="true")
+                p.sans-2.uppercase.italic
+                  - echo $quienes
+            li
+              a(href!="<?php echo site_url(); ?>/productos",data-toggle="sidebar",data-scrollTo="true")
+                p.sans-2.uppercase.italic
+                  - echo $productos
+            li
+              a(href!="<?php echo site_url(); ?>/noticias",data-toggle="sidebar",data-scrollTo="true")
+                p.sans-2.uppercase.italic
+                  - echo $noticias
+            li
+              a(href!="<?php echo site_url(); ?>/contacto",target="_blank")
+                p.sans-2.uppercase.italic
+                  - echo $contacto
+            li
+              a(href!="<?php echo site_url(); ?>")
+                p.sans-2.uppercase.italic
+                  - echo $busca

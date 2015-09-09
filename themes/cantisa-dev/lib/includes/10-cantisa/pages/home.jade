@@ -1,0 +1,148 @@
+#home
+  #myCarousel.carousel.slide.main-bgcolor.light-color(data-ride='carousel')
+    ol.carousel-indicators
+      - if(get_field('carousel')):
+      - $counter = 0
+      - while (the_repeater_field('carousel')):
+      li(class!="<?php if ($counter==0){ echo 'active'; } ?>",data-target='#myCarousel', data-slide-to!='<?php echo $counter ?>')
+      - endwhile
+      - endif
+    .carousel-inner(role='listbox')
+      - if(get_field('carousel')):
+      - $counter = 0
+      - while(the_repeater_field('carousel')):
+      .item(class!="<?php if ($counter==0){ echo 'active'; } ?>")
+        .bg-fixed
+          .background-full.zoomClass.bg-alpha-main(style!="background-image:url('<?php the_sub_field('background_image') ?>')")
+            .bg
+        img.first-slide.zoomClass(src!="<?php the_sub_field('background_image') ?>", alt='')
+        .container
+          .carousel-caption(class!="<?php if ($counter==0){ echo ' anim from-left anim-far anim-slow'; } ?>")
+            h2.text-lg.lighter 
+              - the_sub_field('texto')
+      - $counter++
+      - endwhile
+      - endif
+      //-
+        .item
+          .bg-fixed
+            .background-full.zoomClass.bg-alpha-main(style!="background-image:url('<?php echo get_template_directory_uri(); ?>/assets/misc/10-cantisa/web/home.jpg')")
+              .bg
+          img.second-slide.zoomClass(src!='<?php echo get_template_directory_uri(); ?>/assets/misc/10-cantisa/web/home.jpg', alt='Second slide')
+          .container
+            .carousel-caption
+              h2.text-lg.lighter 30 años de 
+                br
+                span.bolder.uppercase calidad
+        .item
+          .bg-fixed
+            .background-full.zoomClass.bg-alpha-main(style!="background-image:url('<?php echo get_template_directory_uri(); ?>/assets/misc/10-cantisa/web/home.jpg')")
+              .bg
+          img.third-slide.zoomClass(src!='<?php echo get_template_directory_uri(); ?>/assets/misc/10-cantisa/web/home.jpg', alt='Third slide')
+          .container
+            .carousel-caption
+              h2.text-lg.lighter Expertos en 
+                br
+                span.bolder.uppercase trámites aduaneros y sanitarios
+    a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
+      span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+      span.sr-only Previous
+    a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
+      span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+      span.sr-only Next  
+
+
+  //- PORTFOLIO
+  .block.container-fluid.block-wide.lightgray-bgcolor
+    .row.portfolio.thumbs-wide
+
+      - $post_object = get_field('thumb_01')
+      - if ($post_object):
+      - $post = $post_object
+      - setup_postdata ($post)
+
+      a.col-sm-3.thumb.zoomHover.center(href!="<?php the_permalink();?>")
+        .img.background-full.bg-gradientshadow-top(style!="background-image:url('<?php the_field('foto_principal')?>');")
+          .bg
+        .text-content
+          .spacing.sp-md
+          h3.light-color.title.uppercase.lighter
+            - the_field('titulo_linea_1')
+            br
+            span.bolder
+              - the_field('titulo_linea_2')
+          .spacing.sp-sm2
+          .btn.btn-sm.btn-bordered
+            - if(ICL_LANGUAGE_CODE=='en') {
+            | Read more
+            - } else {
+            | Leer más
+            - }
+      - wp_reset_postdata()
+      - endif
+      - $post_object = get_field('thumb_02')
+      - if ($post_object):
+      - $post = $post_object
+      - setup_postdata ($post)
+
+      a.col-sm-3.thumb.zoomHover.center(href!="<?php the_permalink();?>")
+        .img.background-full.bg-gradientshadow-top(style!="background-image:url('<?php the_field('foto_principal')?>');")
+          .bg
+        .text-content
+          .spacing.sp-md
+          h3.light-color.title.uppercase.lighter
+            - the_field('titulo_linea_1')
+            br
+            span.bolder
+              - the_field('titulo_linea_2')
+          .spacing.sp-sm2
+          .btn.btn-sm.btn-bordered 
+            - if(ICL_LANGUAGE_CODE=='en') {
+            | Read more
+            - } else {
+            | Leer más
+            - }
+      - wp_reset_postdata()
+      - endif
+      - $post_object = get_field('thumb_03')
+      - if ($post_object):
+      - $post = $post_object
+      - setup_postdata ($post)
+
+      a.col-sm-3.thumb.zoomHover.center(href!="<?php the_permalink();?>")
+        .img.background-full.bg-gradientshadow-top(style!="background-image:url('<?php the_field('foto_principal')?>');")
+          .bg
+        .text-content
+          .spacing.sp-md
+          h3.light-color.title.uppercase.lighter
+            - the_field('titulo_linea_1')
+            br
+            span.bolder
+              - the_field('titulo_linea_2')
+          .spacing.sp-sm2
+          .btn.btn-sm.btn-bordered 
+            - if(ICL_LANGUAGE_CODE=='en') {
+            | Read more
+            - } else {
+            | Leer más
+            - }
+      - wp_reset_postdata()
+      - endif
+        - $args = array( 'numberposts' => '1' );
+        - $recent_posts = wp_get_recent_posts( $args );
+        - foreach( $recent_posts as $recent ){
+        a.col-sm-3.main-bgcolor.thumb.red-thumb.center(href!="<?php echo get_permalink($recent['ID'])?>")
+          .text-content.align-left
+            h3.light-color
+              span.bolder 
+                - $allCat = get_the_category();
+                - $lastCat = array_reverse($allCat);
+                - echo $lastCat[$recent['ID']]->name;
+                |  / 
+              - echo get_the_date('d.m.Y',$recent['ID'])
+            .spacing.sp-sm
+            p.light-color.lined-sm
+              - echo get_the_title($recent['ID'])
+        - }
+
+      

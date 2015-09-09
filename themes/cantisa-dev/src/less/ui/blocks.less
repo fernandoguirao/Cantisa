@@ -1,0 +1,85 @@
+/* SEVERAL PROPERTIES */
+.center {
+  text-align: center;
+}
+.next-up {
+  position: absolute;
+  bottom: 80px;
+  width:100%;
+  left:0;
+  @media(max-width:@screen-xs-max){
+   bottom:37px; 
+  }
+}
+a.block {
+  width:100%;
+  display: inherit;
+}
+
+.z-back {
+  .z-index(-2);
+}
+
+.block {
+  /* GENERAL OPTIONS */
+  position: relative;
+  /*padding:50px 30px;*/
+  padding:66px 84px;
+  
+  @media(max-width:@screen-sm-max){
+    padding:55px 45px;
+  }
+  @media(max-width:@screen-xs-max){
+    padding:50px 30px;
+  }
+
+  /* TYPES */
+  &.block-full {
+    height:763px;
+    @media(max-width:@screen-xs-max){
+     height:568px; 
+    }
+    .row {
+      margin-top:90px;
+      @media(max-width:@screen-xs-max){
+        margin-top:8px;
+      }
+    }
+  }
+  &.block-bordered {
+    &:after {
+      content:"";
+      position: absolute;
+      left:6px;
+
+      width: ~"calc(100% - 12px)";
+      width: ~"-moz-calc(100% - 12px)";
+      width: ~"-webkit-calc(100% - 12px)";
+      width: ~"-o-calc(100% - 12px)";
+
+      height: ~"calc(100% - 12px)";
+      height: ~"-moz-calc(100% - 12px)";
+      height: ~"-webkit-calc(100% - 12px)";
+      height: ~"-o-calc(100% - 12px)";
+      top:6px;
+      border:3px solid white;
+    }
+  }
+  &.block-fixed {
+    position:fixed;
+    top:0;
+    left:0;
+    .z-index(1);
+    overflow: scroll;
+  }
+  &.block-wide {
+    padding:0;
+    .row {
+      margin-right: 0;
+    }
+  }
+  &.block-stretch {
+    padding-top: 19px;
+    padding-bottom: 19px;
+  }
+}

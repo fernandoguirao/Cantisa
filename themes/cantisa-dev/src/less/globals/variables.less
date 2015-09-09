@@ -1,0 +1,63 @@
+// COLOURS
+
+@main:@blue;
+
+@accent:@gold;
+
+@dark:#323237;
+
+@light:white;
+
+@light-gray:#efeded;
+
+@gray:#b0b0b4;
+
+@dark-gray:#585864;
+
+@blue:#5572fa;
+
+@lightblue:#8da0fc;
+
+@gold:#fabf3f;
+
+@green:#52b6ac;
+
+@pink:#ea437b;
+
+@red:#e37475;
+
+@purple:#aa4cba;
+
+@yellow:#fcd747;
+
+@orange:#ff6414;
+
+@dark-orange:#ff472c;
+
+@darkmain:darken(@main,5%);
+
+
+// FONTS
+
+@font-serif:Georgia, Times, 'Times New Roman', serif;
+@font-serif-2:'Libre Baskerville', Georgia, serif;
+@font-sans:'Open Sans', sans-serif;
+@font-sans-2:'Biko', sans-serif;
+@font-code:Monaco, Menlo, Consolas, "Courier New", monospace;
+
+@lighter:lighter;
+@bold:bold;
+@bolder:800;
+
+// Z-INDEX
+@front:1;
+.z-index(@index:1){
+  z-index:@front+@index;
+}
+
+// EASING
+
+@easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+@easing: cubic-bezier(0.645, 0.045, 0.355, 1);
+@easeOutCubic: @easeInOutCubic;
+@bounce: cubic-bezier(0, 1.8, 1, 1.1);

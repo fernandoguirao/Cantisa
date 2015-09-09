@@ -1,0 +1,118 @@
+- if(ICL_LANGUAGE_CODE=='en') {
+- $quienes = 'Who we are'
+- $productos = 'Products'
+- $noticias = 'News'
+- $contacto = 'Contact'
+- $busca = 'Find a product'
+- $idiomas = 'Languages'
+- $aviso = 'Legal'
+- $siguenos = 'Follow us'
+- $noencuentra = 'Need help?'
+- $preguntar = 'Contact'
+- } else {
+- $quienes = 'Quiénes somos'
+- $productos = 'Productos'
+- $noticias = 'Noticias'
+- $contacto = 'Contacto'
+- $busca = "Busca un producto"
+- $idiomas = 'Idiomas'
+- $aviso = 'Aviso legal'
+- $siguenos = 'Síguenos'
+- $noencuentra = '¿No lo encuentras?'
+- $preguntar = 'Preguntar'
+- }
+
+//- FOOTER
+footer
+  .block.container-fluid.block-wide.light-color
+    //- FIRST FOOTER
+    #mainfooter.row.dark-bgcolor.withmap.portfolio.thumbs-wide
+      .col-sm-4.thumb.darker
+        .spacing.sp-md
+        .col-sm-8.col-sm-offset-2
+          h3.uppercase Cantisa
+          .spacing.sp-sm
+          ul.list
+            li
+              p.text-md
+                span.uppercase
+                  - echo $idiomas
+                .spacing.sp-xs
+                <?php do_action('wpml_add_language_selector'); ?>
+            li
+              p.text-md
+                a(href!="<?php echo site_url(); ?>/quienes")
+                  - echo $quienes
+            li
+              p.text-md
+                a(href!="<?php echo site_url(); ?>/productos")
+                  - echo $productos
+            li
+              p.text-md
+                a(href!="<?php echo site_url(); ?>/noticias")
+                  - echo $noticias
+            li
+              p.text-md
+                a(href!="<?php echo site_url(); ?>/contacto")
+                  - echo $contact
+
+      .col-sm-4.thumb
+        .spacing.sp-md
+        .col-sm-8.col-sm-offset-2
+          h3.uppercase
+            - echo $contact
+          .spacing.sp-sm
+          ul.list
+            li
+              p.text-md
+                | C/ Pintor Joaquín Sorolla
+                br
+                | Polígono industrial Ciudad Mudeco
+                br
+                | 4630 Quart de Poblet Valencia, España
+            li
+              p.text-md
+                a(href="mailto:cantisa@cantisa.es") cantisa@cantisa.es
+            li
+              p.text-md
+                | 961 597 242
+            //- li
+            //-   p.text-md
+            //-     a(href!="<?php echo site_url(); ?>/contacto") Escríbenos
+            li
+              p.text-md
+                a(href!="<?php echo site_url(); ?>/legal")
+                  - echo $aviso
+      .col-sm-4.thumb.darker
+        .spacing.sp-md
+        .col-sm-8.col-sm-offset-2
+          h3.uppercase
+            - echo $siguenos
+          .spacing.sp-sm
+
+          form.box-form(method="get",action="http://217.125.51.89/equiv/")
+            .input-group
+              - if(ICL_LANGUAGE_CODE=='en') {
+              input.form-control(type="text",placeholder!="Find a product",name="tab")
+              - } else {
+              input.form-control(type="text",placeholder!="Busca un producto",name="tab")
+              - }
+              span.input-group-btn
+                button.btn.btn-main(type="submit")
+                  span.fa.fa-search
+          .spacing.sp-sm   
+          ul.list.list-horizontal
+            li
+              a.btn.btn-main(href="",target="_blank")
+                i.fa.fa-facebook
+            li
+              a.btn.btn-main(href="",target="_blank")
+                i.fa.fa-twitter
+            li
+              a.btn.btn-main(href="",target="_blank")
+                i.fa.fa-linkedin
+            li
+              a.btn.btn-main(href="",target="_blank")
+                i.fa.fa-google-plus
+
+    .spacing.sp-lg

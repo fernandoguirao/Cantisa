@@ -1,0 +1,129 @@
+form {
+
+  input.form-control {
+    -webkit-appearance:none;
+    height: inherit;
+    .box-shadow(none);
+  }
+  textarea {
+    .box-shadow(none)!important;
+  }
+  // FORM TYPES
+  &.form-full {
+    padding:0!important;
+  }
+  &.box-form {
+    input,.btn {
+      padding:20px 25px;
+      .border-radius(0);
+    }
+    &.form-sm {
+      input,.btn {
+        padding:10px 25px;
+      }
+    }
+  }
+  &.form-bordered {
+    .form-group .form-control {
+      background-color:transparent;
+      background:transparent;
+      border:2px solid @light;
+      .placeholder(@light);
+    }
+    &.form-dark {
+      .form-group .form-control {
+        border-color:@dark;
+        .placeholder(@dark);
+      }
+      .btn {
+        background-color:@dark!important;
+        border:2px solid @dark!important;
+      }
+    }
+    .btn {
+      background-color:@light!important;
+      border:2px solid @light!important;
+    }
+  }
+  &.form-big {
+    input {
+      font-size:24px;
+    }
+    .btn {
+      font-size:18px;
+    }
+    input {
+      padding: 14px 42px;
+      margin-top: -1px;
+    }
+  }
+  &.form-inline {
+    input {
+      .box-shadow(none);
+      border-color:rgba(0,0,0,.1);
+    }
+    .title {
+      margin-right:23px;
+    }
+    .btn {
+      text-transform: none;
+      padding-top:14px;
+      padding-bottom:14px;
+    }
+    &.form-big {
+      .btn {
+        padding-top: 19px;
+        padding-bottom:19px;
+        text-transform: uppercase;
+        font-weight: @bold;
+      }
+    }
+    @media(max-width:@screen-md-max){
+      .form-group {
+        max-width:32%;
+        input {
+          .border-radius(0);
+        }
+      } 
+      .btn {
+        padding-left:28px;
+        padding-right:28px;
+        .border-radius(0);
+      }
+    }
+    @media(min-width:@screen-xs-max) and (max-width:@screen-sm-max) {
+      .btn {
+        width: 552px;
+        margin-top: 3px;
+      }
+    }
+    @media(max-width:@screen-sm-max){
+      .form-group {
+        margin-bottom:0;
+        width:100%;
+        max-width: inherit;
+        input {
+          text-align: center;
+          width:100%;
+        }
+      }
+      .btn {
+        width: 100%;
+        .border-radius(0);
+        border: none;
+      }
+    }
+    
+  }
+
+  // WITH ICON LEFT PLACEHOLDER
+  .input-group-addon {
+    background-color: transparent;
+    position: absolute;
+    border: none;
+    padding: 11px 15px;
+  }
+  .input-group-addon + input {
+    padding-left:35px;
+  }
+}

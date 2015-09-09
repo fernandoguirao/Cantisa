@@ -1,0 +1,133 @@
+.diamond(@diamondSize,@marginY) {
+  color: #000;
+  display: block;
+  height: @diamondSize;
+  overflow: hidden;
+  position: absolute;
+  text-decoration: none;
+  width: @diamondSize;
+  overflow: hidden;
+  .rotate(-45deg);
+  .z-index(1);
+  margin-left:-@diamondSize/2;
+  left:50%;
+  margin-top: -(@diamondSize/@marginY)+16px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+  .content {
+    display: table-cell;
+    height: @diamondSize;
+    padding: 0 10px;
+    .rotate(45deg);
+    text-align: center;
+    vertical-align: middle;
+    width: @diamondSize;
+  }
+  @media(max-width:@screen-xs-max){
+    .rotate(0deg);
+    height:inherit;
+    overflow: visible;
+    position:relative;
+    left:0;
+    margin-left:0;
+    width:100%;
+    .content {
+      @media(max-width:@screen-xs-max){
+        .rotate(0deg);
+        position: relative;
+        height:inherit;
+        overflow: visible;
+        width:100%;
+        position:relative;
+        margin:0;
+        display: block;
+        padding:25px 15px;
+        top:0!important;
+        h4 {
+          margin-top:0;
+        }
+      }
+    }
+  }
+}
+
+.diamond-size-sm {
+  margin-top:50px;
+  &.diamond-top {
+    margin-top: -16px;
+    margin-bottom: 56px;
+  }
+  .diamond {
+    .diamond(100px,1000);
+  }
+}
+
+.diamond-size-md {
+  margin-top:150px;
+  &.diamond-top {
+    margin-top: -26px;
+    margin-bottom: 144px;
+  }
+  .diamond {
+    .diamond(200px,4);
+  }
+  @media(max-width:@screen-xs-max){
+    margin-top:0;
+    z-index:1;
+    position:relative;
+    /* Standard */
+    width: ~"calc(100% + 60px)";
+
+    width: ~"-moz-calc(100% + 60px)";
+    /* WebKit */
+    width: ~"-webkit-calc(100% + 60px)";
+    /* Opera */
+    width: ~"-o-calc(100% + 60px)";
+    margin-left: -30px;
+    top: 52px;
+    display: block;
+  }
+}
+
+.diamond-size-lg {
+  margin-top:200px;
+  .diamond {
+    .diamond(300px,3);
+  }
+}
+
+.diamond-size-xl {
+  margin-top:250px;
+  .diamond {
+    .diamond(400px,2.7);
+  }
+}
+
+.half-diamond {
+  .z-index(-1);
+  position: relative;
+  margin-top:88px;
+  .content {
+    top:17%!important;
+    h4 {
+      margin-top: -35%;
+    }
+  }
+  @media(max-width:@screen-xs-max){
+    margin-top:0;
+    .z-index(0);
+    /* Standard */
+    width: ~"calc(100% + 60px)";
+
+    width: ~"-moz-calc(100% + 60px)";
+    /* WebKit */
+    width: ~"-webkit-calc(100% + 60px)";
+    /* Opera */
+    width: ~"-o-calc(100% + 60px)";
+    margin-left: -30px;
+    top: 52px;
+    display: block;
+  }
+}

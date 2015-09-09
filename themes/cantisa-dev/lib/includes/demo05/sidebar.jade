@@ -1,0 +1,76 @@
+.sidebar.main-bgcolor
+  .close-view.light-color
+    a.sans(href="#",data-toggle="sidebar") +
+  .block
+    .row
+      .col-xs-12.center
+        .brand
+          img.img-full(src="assets/images/logo-bigband.png")
+        .spacing.sp-md
+        .side-menu
+          ul#main-nav.main-nav.nav-menu.nav-lined.light-color.align-left
+            li
+              a(href="#columnas",data-scrollTo="true")
+                p.sans-2.uppercase.bold Columnas
+            li
+              a(href="#sidebars",data-scrollTo="true")
+                p.sans-2.uppercase.bold Sidebar
+            li
+              a.active(href="#subnav2",data-toggle="subnav")
+                p.sans-2.uppercase.bold Sidebar
+              ul.sub-items
+                li
+                  a(href="")
+                    p.sans-2.bold Otro
+            li
+              a(href="")
+                p.sans-2.uppercase.bold Contact
+            li
+              a(href="")
+                p.sans-2.uppercase.bold Portfolio
+          ul#subnav1.subnav.nav-menu.nav-bordered.light-color.align-left
+            li
+              a(href=".main-nav",data-toggle="subclose")
+                p.sans-2.uppercase.bold Close
+            li
+              a.active(href="")
+                p.sans-2.uppercase.bold Gallery
+            li
+              a(href="#subnav2",data-toggle="subnav")
+                p.sans-2.uppercase.bold Subnav3
+            li
+              a(href="")
+                p.sans-2.uppercase.bold Portfolio
+
+          ul#subnav2.subnav.nav-menu.nav-bordered.light-color.align-left
+            li
+              a(href="#subnav1",data-toggle="subclose")
+                p.sans-2.uppercase.bold Close
+            li
+              a.active(href="")
+                p.sans-2.uppercase.bold Gallery
+            li
+              a(href="")
+                p.sans-2.uppercase.bold Contact
+            li
+              a(href="")
+                p.sans-2.uppercase.bold Portfolio
+          ul#subnav3.nav-bordered.subnav.nav-menu.light-color.align-left
+            li
+              a(href=".main-nav",data-toggle="subclose")
+                p.sans-2.uppercase.bold Close
+            li
+              a.active(href="")
+                p.sans-2.uppercase.bold Gallery
+            li
+              a(href="")
+                p.sans-2.uppercase.bold Contact
+            li
+              a(href="")
+                p.sans-2.uppercase.bold Portfolio
+  //-
+    .sidebar-footer
+      .block.alphablack-bgcolor.light-color
+        .row
+          .block-1.center
+            p.text-sm @2014 PlayGrownd

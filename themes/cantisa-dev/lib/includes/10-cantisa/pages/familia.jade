@@ -1,0 +1,417 @@
+//- SOBRE LA TAXONOMÍA
+- $term = get_term_by( 'slug', get_query_var('family'), 'tipo_de_producto' );
+- $categoria = $term->name;
+- $textf = get_tax_meta($term,'ba_text_field_id',true);
+
+//- SOBRE LOS POSTS
+- $family = get_query_var( 'family' );
+- $post_type = 'cantisa_producto';
+- $tax = 'tipo_de_producto';
+- $tax_terms = get_terms($tax);
+- if ($tax_terms):
+- foreach ($tax_terms  as $tax_term) {
+- $args=array('post_type' => $post_type,'posts_per_page' => -1,'tax_query' => array(array('taxonomy' =>'tipo_de_producto','field'    => 'slug','terms' => $family )));
+- }
+- endif;
+
+//- LOOP DE POSTS
+- $my_query = null;
+- $my_query = new WP_Query($args);
+
+- if( $my_query->have_posts() ):
+
+#productos
+  .study.block.container-fluid.posts-block.lightgray-bgcolor
+    .row
+      .uppercase
+        a(href="/")
+          | Home 
+        i.fa.fa-chevron-right
+        a(href="/productos")
+          |  Productos 
+        i.fa.fa-chevron-right
+        a(href!="/<?php echo $family ?>")
+          - echo ' '.$categoria;
+      .spacing.sp-sm2
+    .row
+      .col-xs-12.text-center
+        h2 
+          - echo $categoria
+        h5.uppercase.main-color 
+          - echo $textf
+      .spacing.sp-sm2
+
+
+    //- LOOP 1
+
+    - while ($my_query->have_posts()) : $my_query->the_post();
+    - if ( $my_query->current_post == 0 ) {
+    .row.row-lessgutter.thumbs.center
+      .col-sm-6.col-lessgutter
+        a.img-full.background-full.thumb.thumb-lg(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-xl
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+            .spacing.sp-sm2
+        - }
+        - endwhile;
+        
+        //- TERMINA LOOP 1
+
+        //- LOOP 2
+        - rewind_posts();
+
+        - while ($my_query->have_posts()) : $my_query->the_post();
+
+        - if ( $my_query->current_post == 1 ) {
+        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-md2
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+        - }
+        - endwhile;
+        //- TERMINA LOOP 2
+      //- LOOP 3
+      - rewind_posts();
+      - while ($my_query->have_posts()) : $my_query->the_post();
+      - if ( $my_query->current_post == 2 ) {
+      .col-sm-3.col-lessgutter
+        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-md2
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+        - }
+        - endwhile;
+        //- TERMINA LOOP 3
+
+        //- LOOP 4
+        - rewind_posts();
+        - while ($my_query->have_posts()) : $my_query->the_post();
+        - if ( $my_query->current_post == 3 ) {
+        a.img-full.background-full.thumb.thumb-lg(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-xl
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+            .spacing.sp-sm2
+        - }
+        - endwhile;
+        //- TERMINA LOOP 4
+
+      //- LOOP 5
+      - rewind_posts();
+      - while ($my_query->have_posts()) : $my_query->the_post();
+      - if ( $my_query->current_post == 4 ) {
+      .col-sm-3.col-lessgutter
+        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-md2
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+        - }
+        - endwhile;
+        //- TERMINA LOOP 5
+
+        //- LOOP 6
+        - rewind_posts();
+        - while ($my_query->have_posts()) : $my_query->the_post();
+        - if ( $my_query->current_post == 5 ) {
+
+        a.img-full.background-full.thumb.thumb-lg(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-xl
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+            .spacing.sp-sm2
+    - }
+
+    - endwhile;
+    //- TERMINA LOOP 6
+
+    //- LOOP 7
+    - rewind_posts();
+    - while ($my_query->have_posts()) : $my_query->the_post();
+    - if ( $my_query->current_post == 6 ) {
+    .row.row-lessgutter.thumbs.center(style="top:-10px;position: relative;")
+      .col-sm-3.col-lessgutter
+        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-md2
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+      - }
+
+      - endwhile;
+      //- TERMINA LOOP 7
+
+      //- LOOP 8
+      - rewind_posts();
+      - while ($my_query->have_posts()) : $my_query->the_post();
+      - if ( $my_query->current_post == 7 ) {
+      .col-sm-3.col-lessgutter
+        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-md2
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+      - }
+
+      - endwhile;
+      //- TERMINA LOOP 8
+      //- LOOP 9
+      - rewind_posts();
+      - while ($my_query->have_posts()) : $my_query->the_post();
+      - if ( $my_query->current_post == 8 ) {
+      .col-sm-6.col-lessgutter
+        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-md2
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+      - }
+
+      - endwhile;
+      //- TERMINA LOOP 9
+      //- LOOP 10 y siguientes
+      - rewind_posts();
+      - while ($my_query->have_posts()) : $my_query->the_post();
+      - if ( $my_query->current_post > 8 ) {
+      .col-sm-6.col-lessgutter(style="position:relative;margin-top:-10px;")
+        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-md2
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+      - }
+      - endwhile;
+      //- TERMINA LOOP 10 y siguientes
+
+
+
+    //- CÓDIGO FINAL
+    - wp_reset_query();
+    - endif;
+    //- - }
+    //- - endif;
+
+
+//-
+    //- loop1
+    .row.row-lessgutter.thumbs.center
+      .col-sm-6.col-lessgutter
+        a.img-full.background-full.thumb.thumb-lg(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-xl
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+            .spacing.sp-sm2
+        //- loop2
+        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-md2
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+      //- loop3
+      .col-sm-3.col-lessgutter
+        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-md2
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+        //- loop4
+        a.img-full.background-full.thumb.thumb-lg(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-xl
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+            .spacing.sp-sm2
+      //- loop5
+      .col-sm-3.col-lessgutter
+        a.img-full.background-full.thumb.thumb-lg(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-xl
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+            .spacing.sp-sm2
+        //- loop6 
+        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-md2
+            h3.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+    //- loop7
+    .row.row-lessgutter.thumbs.center(style="top:-10px;position: relative;")
+      .col-sm-3.col-lessgutter
+        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-md2
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+      //- loop8
+      .col-sm-3.col-lessgutter
+        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-md2
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+      //- loop9
+      .col-sm-6.col-lessgutter
+        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo get_permalink(); ?>",title="",style!="background-image:url('<?php the_field('foto_principal');?>')")
+          .text-content
+            .spacing.sp-md2
+            h3.text-shadow.light-color.title.uppercase.bolder 
+              - the_field('titulo_linea_1');
+              - echo ' ';
+              - the_field('titulo_linea_2');
+
+
+
+//- #listaproductos
+
+//-   - $family = get_query_var( 'family' );
+//-   - $post_type = 'cantisa_producto';
+//-   - $tax = 'tipo_de_producto';
+//-   - $tax_terms = get_terms($tax);
+//-   - if ($tax_terms):
+//-   - foreach ($tax_terms  as $tax_term) {
+//-   - $args=array('post_type' => $post_type,'tax_query' => array(array('taxonomy' =>'tipo_de_producto','field'    => 'slug','terms' => $family )));
+
+//-   - $my_query = null;
+//-   - $my_query = new WP_Query($args);
+//-   - if( $my_query->have_posts() ):
+//-   - while ($my_query->have_posts()) : $my_query->the_post();
+
+  
+//-   - if ($contador == 1) {
+//-   a.block.container-fluid.darkgray-bgcolor.producto(href!="<?php echo get_permalink(); ?>")
+//-     .row
+//-       .col-sm-4.bg-fixed
+//-         .background-full.img-float(style!="background-image:url('<?php the_field('foto_principal');?>')")
+//-       .col-sm-8.col-sm-offset-4.from-right.anim
+//-         .col-sm-12
+//-           h2.sans-2.pull-left.uppercase.lighter.black-color
+//-             - the_field('titulo_linea_1');
+//-             br
+//-             span.bold
+//-               - the_field('titulo_linea_2');
+//-           .btn.btn-bordered.icon-show.btn-md.pull-right.btn-nolink
+//-             - the_field('grosor');
+//-             span.icon-right.fa.fa-chevron-right
+//-           .clearfix
+//-           .spacing.sp-lg
+//-           .col-sm-9.white-color
+//-             p.sans.text-lg
+//-               - the_field('descripcion_breve');
+//-             .spacing.sp-sm
+//-             p.sans
+//-               | + info 
+//-               span.fa.fa-chevron-right.prod-chev
+//-   - $contador++;
+//-   - } elseif ($contador ==2) {
+//-   a.block.container-fluid.dark-color.light-bgcolor.producto(href!="<?php echo get_permalink();?>")
+//-     .row
+//-       .col-sm-4.anim.from-left
+//-         .col-sm-12.producto-left
+//-           h2.sans-2.uppercase.lighter
+//-             - the_field('titulo_linea_1');
+//-             br
+//-             span.bold
+//-               - the_field('titulo_linea_2'); 
+//-           .spacing.sp-lg
+//-           p.sans.text-lg
+//-             - the_field('descripcion_breve');
+//-           .spacing.sp-sm
+//-           p.sans + info 
+//-             span.fa.fa-chevron-right.prod-chev
+//-       .col-sm-8.col-sm-offset-4.bg-fixed
+//-         .background-full.img-float(style!="background-image:url('<?php the_field('foto_principal');?>')")
+//-   - $contador++;
+//-   - } elseif ($contador ==3) {
+//-   a.block.container-fluid.white-color.main-bgcolor.producto(href!="<?php echo get_permalink();?>")
+//-     .row
+//-       .col-sm-4.bg-fixed
+//-         .background-full.img-float(style!="background-image:url('<?php the_field('foto_principal');?>')")
+//-       .col-sm-8.col-sm-offset-4.from-right.anim
+//-         .col-sm-12
+//-           h2.sans-2.pull-left.uppercase.lighter
+//-             - the_field('titulo_linea_1');
+//-             br
+//-             span.bold 
+//-             - the_field('titulo_linea_1');
+//-           .btn.btn-nolink.btn-bordered.icon-show.btn-md.pull-right
+//-             - the_field('grosor');
+//-             span.icon-right.fa.fa-chevron-right
+//-           .clearfix
+//-           .spacing.sp-lg
+//-           .col-sm-9
+//-             p.sans.text-lg
+//-               - the_field('descripcion_breve');
+//-             .spacing.sp-sm
+//-             p.sans + info 
+//-               span.fa.fa-chevron-right.prod-chev
+//-   - $contador++;
+//-   - } else {
+//-   a.block.container-fluid.dark-color.light-bgcolor.producto(href!="<?php echo get_permalink();?>")
+//-     .row
+//-       .col-sm-4.anim.from-left
+//-         .col-sm-12.producto-left
+//-           h2.sans-2.uppercase.lighter
+//-             - the_field('titulo_linea_1');
+//-             br
+//-             span.bold
+//-               - the_field('titulo_linea_2');
+//-           .spacing.sp-lg
+//-           p.sans.text-lg
+//-             - the_field('descripcion_breve');
+//-           .spacing.sp-sm
+//-           p.sans + info 
+//-             span.fa.fa-chevron-right.prod-chev
+//-       .col-sm-8.col-sm-offset-4.bg-fixed
+//-         .background-full.img-float(style!="background-image:url('<?php the_field('foto_principal');?>')")
+//-   - $contador = 1;
+//-   - }
+//-   - endwhile;
+//-   - wp_reset_query();
+//-   - endif;
+//-   - }
+//-   - endif;
+

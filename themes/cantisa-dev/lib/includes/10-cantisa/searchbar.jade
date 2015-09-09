@@ -1,0 +1,24 @@
+#buscador(style!="<?php if (is_page( 'productos' )|| is_page( 'familia' )|| 'cantisa_producto' == get_post_type()) { ?>margin-top: 0px; opacity: 1;<?php } ?>") 
+  .block.block-stretch.container-fluid.gray-bgcolor
+    .row
+      .col-sm-8
+        .row
+          .col-sm-4.align-right
+            h4.title
+              span.dark-color.bold.text-sm
+                - echo $busca
+          .col-sm-8
+            form.box-form.form-sm(method="get",action="http://217.125.51.89/equiv/")
+              .input-group
+                input.form-control(type="text",placeholder="Referencia producto",name="tab",value="")
+                span.input-group-btn
+                  button.btn.btn-dark(type="submit")
+                    span.fa.fa-search
+      .col-sm-4.align-right
+        ul.list.list-horizontal
+          li
+            p.bold
+              - echo $noencuentra
+          li
+            a.btn.btn-lightgray(href!="<?php echo site_url(); ?>/contacto")
+              - echo $preguntar

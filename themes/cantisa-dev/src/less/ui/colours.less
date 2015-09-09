@@ -1,0 +1,368 @@
+/* FONT COLORS */
+
+h1,h2,h3,h4,h5,p,blockquote,*,div,a,pre,span,body {
+  color:@dark;
+}
+
+.dark-color {
+  color:@dark;
+  * {
+    color:@dark;
+  }
+}
+
+a.dark-color:hover {
+  color:@dark;
+}
+
+.light-color {
+  color:@light;
+  * {
+    color:@light;
+  }
+}
+
+a.light-color:hover {
+  color:@light;
+}
+
+.white-color {
+  color:white;
+  * {
+    color:white;
+  }
+}
+
+a.light-color:hover {
+  color:white;
+}
+
+
+.gray-color {
+  color:@gray;
+  * {
+    color:@gray;
+  }
+}
+
+a.gray-color:hover {
+  color:@gray;
+}
+
+.lightgray-color {
+  color:@light-gray;
+  * {
+    color:@light-gray;
+  }
+}
+
+a.lightgray-color:hover {
+  color:@light-gray;
+}
+
+.main-color {
+  color:@main;
+  * {
+    color:@main;
+  }
+}
+
+a.main-color:hover {
+  color:@main;
+}
+
+.accent-color {
+  color:@accent;
+  * {
+    color:@accent;
+  }
+}
+
+a.accent-color:hover {
+  color:@accent;
+}
+
+.red-color {
+  color:@red;
+  * {
+    color:@red;
+  }
+}
+
+a.red-color:hover {
+  color:@red;
+}
+
+.green-color {
+  color:@green;
+  * {
+    color:@green;
+  }
+}
+
+a.green-color:hover {
+  color:@green;
+}
+
+.pink-color {
+  color:@pink;
+  * {
+    color:@pink;
+  }
+}
+
+a.pink-color:hover {
+  color:@pink;
+}
+
+
+/* BACKGROUND-COLORS */
+
+.black-bgcolor {
+  background-color:black;
+}
+
+.alphadark-bgcolor {
+  background-color:rgba(red(@dark),green(@dark),blue(@dark),.3);
+}
+
+.alphablack-bgcolor {
+  background-color:rgba(0,0,0,.2);
+}
+
+.dark-bgcolor {
+  background-color:@dark;
+}
+
+.light-bgcolor {
+  background-color:@light;
+}
+
+.lightgray-bgcolor {
+  background-color:@light-gray;
+}
+
+.gray-bgcolor {
+  background-color:@gray;
+}
+
+.darkgray-bgcolor {
+  background-color:@dark-gray;
+}
+
+.main-bgcolor {
+  background-color:@main;
+}
+
+.darkmain-bgcolor {
+  background-color:darken(@main,5%);
+}
+
+.accent-bgcolor {
+  background-color:@accent;
+}
+
+.yellow-bgcolor {
+  background-color:@yellow;
+}
+
+.green-bgcolor {
+  background-color:@green;
+}
+
+.red-bgcolor {
+  background-color:@red;
+}
+
+.pink-bgcolor {
+  background-color:@pink;
+}
+
+.purple-bgcolor {
+  background-color:@purple;
+}
+
+.blue-bgcolor {
+  background-color:@blue;
+}
+
+.lightblue-bgcolor {
+  background-color:@lightblue;
+}
+
+/* Buttons colors */
+
+.btn-main {
+  background-color:@main;
+  color:@light;
+  &:hover {
+    color:@light;
+    background-color:darken(@main,5%);
+  }
+}
+
+.btn-lightgray {
+  background-color:@light-gray;
+  color:@dark;
+  &:hover {
+    color:@dark;
+    background-color:darken(@light-gray,5%);
+  }
+}
+
+.btn-lightgray {
+  background-color:@gray;
+  color:@dark;
+  &:hover {
+    color:@dark;
+    background-color:darken(@light-gray,5%);
+  }
+}
+
+.btn-darkmain {
+  background-color:darken(@main,5%);
+  color:@light;
+  &:hover {
+    color:@light;
+    background-color:darken(@main,10%);
+  }
+}
+
+.btn-alphablack {
+  background-color:rgba(0,0,0,.1);
+  color:@light;
+  &:hover {
+    color:@light;
+    background-color:rgba(0,0,0,.2);
+  }
+}
+
+.btn-accent {
+  background-color:@accent;
+  color:darken(@accent,35%);
+  span {
+    color:darken(@accent,35%);
+  }
+  &:hover {
+    color:darken(@accent,35%);
+    background-color:darken(@accent,5%);
+  }
+}
+
+.btn-main-dark {
+  background-color:darken(@main,6%);
+  color:@light;
+  &:hover {
+    color:@light;
+    background-color:darken(@main,8%);
+  }
+}
+
+.btn-dark {
+  background-color:@dark;
+  color:@light;
+  border-color:@dark;
+  span {
+    color:@light;
+  }
+  &:hover {
+    color:@light;
+    background-color:darken(@dark,6%);
+    border-color:@dark;
+  } 
+}
+
+.btn-bordered {
+  &.btn-dark {
+    border:2px solid @dark!important;
+    color:@dark!important;
+    * {
+      color:@dark!important;
+    }
+    &:hover {
+      color:darken(@accent,10%)!important;
+      /*border-color:white!important;*/
+      * {
+        color:darken(@accent,10%)!important;
+      }
+    }
+  }
+  &.btn-accent {
+    border:2px solid @accent!important;
+    color:@accent!important;
+    * {
+      color:@accent!important;
+    }
+    &:hover {
+      color:darken(@accent,10%)!important;
+      /*border-color:white!important;*/
+      * {
+        color:darken(@accent,10%)!important;
+      }
+    }
+  }
+}
+
+.main-bgcolor .btn-bordered:hover {
+  
+  &:before {
+    background-color:darken(@main,5%);
+  }
+  * {
+    
+  }
+}
+
+// GRADIENT BUTTONS
+
+.btn-gradient {
+  &.btn-orange {
+    .gradient(@orange,@dark-orange);
+    color:white;
+  }
+}
+
+/* Slice corners colors */
+
+.slice-corner {
+  &.slice-light {
+    &:before {
+      border-color: transparent transparent @light transparent;
+    }
+  }
+  &.slice-main {
+    &:before {
+      border-color: transparent transparent @main transparent;
+    }
+  }
+  &.slice-accent {
+    &:before {
+      border-color: transparent transparent @accent transparent;
+    }
+  }
+  &.slice-yellow {
+    &:before {
+      border-color: transparent transparent @yellow transparent;
+    }
+  }
+  &.slice-pink {
+    &:before {
+      border-color: transparent transparent @pink transparent;
+    }
+  }
+  &.slice-red {
+    &:before {
+      border-color: transparent transparent @red transparent;
+    }
+  }
+  &.slice-green {
+    &:before {
+      border-color: transparent transparent @green transparent;
+    }
+  }
+  &.slice-lightblue {
+    &:before {
+      border-color: transparent transparent @lightblue transparent;
+    }
+  }
+}

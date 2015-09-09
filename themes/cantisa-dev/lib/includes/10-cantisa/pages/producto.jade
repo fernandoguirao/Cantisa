@@ -152,24 +152,41 @@
             - } else {
             | Volver a la ficha
             - }
-    - if (get_field('foto1')) {
-    #galeria.row.row-lessgutter.thumbs
-      h3.text-center
-        - if(ICL_LANGUAGE_CODE=='en') {
-        | Fabrication process
-        - } else {
-        | Proceso de fabricación
-        - }
-      .col-sm-4.col-lessgutter
-        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo the_field('foto1'); ?>",rel="lightbox[producto]",title="",style!="background-image:url('<?php the_field('foto1');?>')")
-          //- img.img-full(src!="<?php the_field('foto1');?>",alt="")
-      .col-sm-4.col-lessgutter
-        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo the_field('foto2'); ?>",rel="lightbox[producto]",title="",style!="background-image:url('<?php the_field('foto2');?>')")
-      .col-sm-4.col-lessgutter
-        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo the_field('foto3'); ?>",rel="lightbox[producto]",title="",style!="background-image:url('<?php the_field('foto3');?>')")
-      .col-sm-4.col-lessgutter
-        a.img-full.background-full.thumb.thumb-sm(href!="<?php echo the_field('foto4'); ?>",rel="lightbox[producto]",title="",style!="background-image:url('<?php the_field('foto4');?>')")
-      - }
+- if( have_rows('fotos_de_slider') ):
+
+.block.container-fluid.lightgray-bgcolor
+
+
+  h3.text-center
+    - if(ICL_LANGUAGE_CODE=='en') {
+    | Fabrication process
+    - } else {
+    | Proceso de fabricación
+    - }
+
+#slideCar
+  - while ( have_rows('fotos_de_slider') ) : the_row();
+  a.img-full.background-full.thumb.thumb-sm(href!="<?php echo the_sub_field('foto'); ?>",rel="lightbox[producto]",title="",style!="background-image:url('<?php the_sub_field('foto');?>')")
+  - endwhile;
+  - endif;
+
+//- #galeria.row.row-lessgutter.thumbs
+//-   h3.text-center
+//-     - if(ICL_LANGUAGE_CODE=='en') {
+//-     | Fabrication process
+//-     - } else {
+//-     | Proceso de fabricación
+//-     - }
+//-   .col-sm-4.col-lessgutter
+//-     a.img-full.background-full.thumb.thumb-sm(href!="<?php echo the_field('foto1'); ?>",rel="lightbox[producto]",title="",style!="background-image:url('<?php the_field('foto1');?>')")
+//-       //- img.img-full(src!="<?php the_field('foto1');?>",alt="")
+//-   .col-sm-4.col-lessgutter
+//-     a.img-full.background-full.thumb.thumb-sm(href!="<?php echo the_field('foto2'); ?>",rel="lightbox[producto]",title="",style!="background-image:url('<?php the_field('foto2');?>')")
+//-   .col-sm-4.col-lessgutter
+//-     a.img-full.background-full.thumb.thumb-sm(href!="<?php echo the_field('foto3'); ?>",rel="lightbox[producto]",title="",style!="background-image:url('<?php the_field('foto3');?>')")
+//-   .col-sm-4.col-lessgutter
+//-     a.img-full.background-full.thumb.thumb-sm(href!="<?php echo the_field('foto4'); ?>",rel="lightbox[producto]",title="",style!="background-image:url('<?php the_field('foto4');?>')")
+//-   - }
 
 
 #detalleproducto.modal.fade(tabindex="-1",role="dialog",aria-labelledby="myModalLabel")
@@ -199,3 +216,4 @@ script.
     mbody.html($(this).next().html());
     mtitulo.html($(this).html());
   })
+

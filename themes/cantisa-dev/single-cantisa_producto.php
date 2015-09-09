@@ -80,17 +80,16 @@
           </div>
         </div>
       </div>
-    </div><?php if (get_field('foto1')) { ?>
-    <div id="galeria" class="row row-lessgutter thumbs">
-      <h3 class="text-center"><?php if(ICL_LANGUAGE_CODE=='en') { ?>Fabrication process<?php } else { ?>Proceso de fabricación<?php } ?>
-      </h3>
-      <div class="col-sm-4 col-lessgutter"><a href="<?php echo the_field('foto1'); ?>" rel="lightbox[producto]" title="" style="background-image:url('<?php the_field('foto1');?>')" class="img-full background-full thumb thumb-sm"></a></div>
-      <div class="col-sm-4 col-lessgutter"><a href="<?php echo the_field('foto2'); ?>" rel="lightbox[producto]" title="" style="background-image:url('<?php the_field('foto2');?>')" class="img-full background-full thumb thumb-sm"></a></div>
-      <div class="col-sm-4 col-lessgutter"><a href="<?php echo the_field('foto3'); ?>" rel="lightbox[producto]" title="" style="background-image:url('<?php the_field('foto3');?>')" class="img-full background-full thumb thumb-sm"></a></div>
-      <div class="col-sm-4 col-lessgutter"><a href="<?php echo the_field('foto4'); ?>" rel="lightbox[producto]" title="" style="background-image:url('<?php the_field('foto4');?>')" class="img-full background-full thumb thumb-sm"></a></div><?php } ?>
     </div>
   </div>
+</div><?php if( have_rows('fotos_de_slider') ): ?>
+<div class="block container-fluid lightgray-bgcolor">
+  <h3 class="text-center"><?php if(ICL_LANGUAGE_CODE=='en') { ?>Fabrication process<?php } else { ?>Proceso de fabricación<?php } ?>
+  </h3>
 </div>
+<div id="slideCar"><?php while ( have_rows('fotos_de_slider') ) : the_row(); ?><a href="<?php echo the_sub_field('foto'); ?>" rel="lightbox[producto]" title="" style="background-image:url('<?php the_sub_field('foto');?>')" class="img-full background-full thumb thumb-sm"></a><?php endwhile; ?><?php endif; ?>
+</div>
+
 <div id="detalleproducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">

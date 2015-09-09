@@ -55,5 +55,54 @@ function imageclick () {
     imageclick();
   })
 }
+
+$(document).ready(function(){
+      $('#slideCar').slick({
+        centerMode: true,
+        centerPadding:'90px',
+/*    centerMode: true,
+    centerPadding: '60px',*/
+    dots: true,
+    /* Just changed this to get the bottom dots navigation */
+    infinite: true,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: true,
+    responsive: [
+        {
+          breakpoint: 800,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true
+          }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
+  });
+    });
   //   copia el div de detalle a fuera del li
   //   hidden a li
+  //   
+/*//- CAROUSEL FINAL
+$('#slideCar').carousel({
+  interval: 10000
+})
+
+$('#slideCar .item').each(function(){
+  var next = $(this).next();
+  if (!next.length) {
+    next = $(this).siblings(':first');
+  }
+  next.children(':first-child').clone().appendTo($(this));
+  
+  if (next.next().length>0) {
+    next.next().children(':first-child').clone().appendTo($(this));
+  }
+  else {
+    $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+  }
+});*/

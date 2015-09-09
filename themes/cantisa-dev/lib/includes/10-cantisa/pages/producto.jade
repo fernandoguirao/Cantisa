@@ -6,9 +6,9 @@
           p.uppercase
             span.fa.fa-chevron-left.spacing.sp-horizontal.sp-sm
             - if(ICL_LANGUAGE_CODE=='en') {
-            | Our products
+            | Products
             - } else {
-            | Nuestros productos
+            | Productos
             - }
         .spacing.sp-sm
         img.img-full(src!="<?php the_field('foto_principal');?>",alt="")
@@ -40,11 +40,11 @@
                 - } else {
                 | descargar ficha
                 - }
-              span.fa.fa-download
+              span.fa.fa-download.hidden-sm.hidden-xs
           .clearfix
         a.block.gray-bgcolor.block-stretch.text-center(href="/productos")
           p.uppercase.text-sm
-            span.fa.fa-chevron-left.spacing.sp-horizontal.sp-sm2
+            span.fa.fa-chevron-left.spacing.sp-horizontal.sp-sm2.hidden-sm.hidden-xs
             - if(ICL_LANGUAGE_CODE=='en') {
             | Back to products
             - } else {
@@ -154,7 +154,7 @@
             - }
 - if( have_rows('fotos_de_slider') ):
 
-.block.container-fluid.lightgray-bgcolor
+.block.container-fluid.lightgray-bgcolor(style="padding-top:0;padding-bottom:10px;")
 
 
   h3.text-center

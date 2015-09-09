@@ -3,7 +3,7 @@
   <div class="block container-fluid posts-block lightgray-bgcolor">
     <div class="row">
       <div id="product-left" class="col-sm-4"><a href="/productos" class="dark-color">
-          <p class="uppercase"><span class="fa fa-chevron-left spacing sp-horizontal sp-sm"></span><?php if(ICL_LANGUAGE_CODE=='en') { ?>Our products<?php } else { ?>Nuestros productos<?php } ?>
+          <p class="uppercase"><span class="fa fa-chevron-left spacing sp-horizontal sp-sm"></span><?php if(ICL_LANGUAGE_CODE=='en') { ?>Products<?php } else { ?>Productos<?php } ?>
           </p></a>
         <div class="spacing sp-sm"></div><img src="<?php the_field('foto_principal');?>" alt="" class="img-full"/>
         <div class="block main-bgcolor light-color">
@@ -20,11 +20,11 @@
             </p>
             <div class="spacing sp-sm"></div><a href="<?php the_field('ficha_pdf');?>" class="text-link">
               <p class="uppercase"><?php if(ICL_LANGUAGE_CODE=='en') { ?>download file<?php } else { ?>descargar ficha<?php } ?>
-              </p><span class="fa fa-download"></span></a>
+              </p><span class="fa fa-download hidden-sm hidden-xs"></span></a>
           </div>
           <div class="clearfix"></div>
         </div><a href="/productos" class="block gray-bgcolor block-stretch text-center">
-          <p class="uppercase text-sm"><span class="fa fa-chevron-left spacing sp-horizontal sp-sm2"></span><?php if(ICL_LANGUAGE_CODE=='en') { ?>Back to products<?php } else { ?>Volver a productos<?php } ?>
+          <p class="uppercase text-sm"><span class="fa fa-chevron-left spacing sp-horizontal sp-sm2 hidden-sm hidden-xs"></span><?php if(ICL_LANGUAGE_CODE=='en') { ?>Back to products<?php } else { ?>Volver a productos<?php } ?>
           </p></a>
       </div>
       <div id="product-right" class="col-sm-8">
@@ -83,7 +83,7 @@
     </div>
   </div>
 </div><?php if( have_rows('fotos_de_slider') ): ?>
-<div class="block container-fluid lightgray-bgcolor">
+<div style="padding-top:0;padding-bottom:10px;" class="block container-fluid lightgray-bgcolor">
   <h3 class="text-center"><?php if(ICL_LANGUAGE_CODE=='en') { ?>Fabrication process<?php } else { ?>Proceso de fabricación<?php } ?>
   </h3>
 </div>
